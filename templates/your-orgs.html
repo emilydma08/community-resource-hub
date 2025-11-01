@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <nav class="bg-blue-600 text-white px-6 py-4 flex items-center justify-center space-x-8 shadow-md text-sm font-medium">
-        <a href="{{ url_for('dashboard') }}" class="hover:text-blue-200 transition">Dashboard</a>
-        <a href="{{ url_for('directory') }}" class="hover:text-blue-200 transition">Directory</a>
-        <a href="{{ url_for('your_orgs') }}" class="hover:text-blue-200 transition">Your Orgs</a>
-        <a href="{{ url_for('profile') }}" class="hover:text-blue-200 transition">Profile</a>
-        <a href="{{ url_for('landing') }}" class="bg-white text-blue-600 px-3 py-1 rounded-md hover:bg-blue-100 transition">Logout</a>
+    <nav class="bg-[var(--beige)] text-white px-6 py-4 flex items-center justify-center space-x-8 shadow-md text-sm font-medium">
+        <a href="{{ url_for('dashboard') }}" class="text-black transition">Dashboard</a>
+        <a href="{{ url_for('directory') }}" class="text-black transition">Directory</a>
+        <a href="{{ url_for('your_orgs') }}" class="text-black transition">Your Orgs</a>
+        <a href="{{ url_for('profile') }}" class="text-black transition">Profile</a>
+        <a href="{{ url_for('landing') }}" class="text-black transition">Logout</a>
     </nav>
 
 
