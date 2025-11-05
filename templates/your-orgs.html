@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Organizations</title>
+    <title>My Organizations</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+            div {
+                margin: 2%;
+                padding: 3%;
+            }
+            input, textarea{
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                box-sizing: border-box;
+                background-color: rgb(234, 234, 234);
+                border: 2px solid black;
+                border-radius: 5px;
+            }
+            input:hover, textarea:hover {
+                background-color: white;
+                outline: none;
+            }
+            input:focus, textarea:focus{
+                background-color: white;
+                outline: none;
+            }
+            textarea {
+                resize: none;
+            }
+            .button {
+                background-color: rgb(82, 155, 100);
+                border: 2px solid black;
+                padding: .5% 1%;
+                text-align: center;
+                border-radius: 10%;
+            }
+            .button:hover {
+                background-color: rgb(51, 111, 66);
+            }
+        </style>
 </head>
 <body>
     <nav class="bg-[var(--beige)] text-white px-6 py-4 flex items-center justify-center space-x-8 shadow-md text-sm font-medium">
@@ -16,7 +53,43 @@
         <a href="{{ url_for('landing') }}" class="text-black transition">Logout</a>
     </nav>
 
+     <h1 style="text-align: center;">My Organizations</h1>
+        <div>
 
-    <h1>Your orgs</h1>
+        {% for org in orgs%}
+            <div class="my-orgs-list" style="background-color: rgb(123, 172, 215);">
+                <h3 style="font-size: larger; font-weight: bold;">{{ org[0] }}</h3>
+                <p>Description: {{ org[1] }}</p>
+                <p>Address: {{ org[2] }}</p>
+                <p>Email: {{ org[3] }}</p>
+                <p>Phone number: {{ org[4] }}</p>
+                <button class="button"><a href="{{ url_for('edit_organization', org_name=org[0]) }}">Edit</a></button>
+            <form name="deleteOrganizationForm" action="{{ url_for('delete_form') }}" method="POST" onclick="return confirm('Are you sure you want to delete {{ org[0] }}?');">
+                <input type="hidden" name="orgName" value="{{ org[0] }}">
+                <input type="submit" style="width: auto" class="button" value="Delete">
+            </form>
+            </div>
+            
+        {% endfor %}
+        </div>
+        <!--add dropdown to select category?-->
+        <div style="text-align: left; background-color: rgb(123, 172, 215);">
+            <h2>Register an Organization</h2>
+            <div style="background-color: rgb(222, 229, 243);">
+                <form name="organizationRegistrationForm" action="{{ url_for('submit_form') }}" method="POST">
+                    <label for="orgName">Organization name:</label>
+                    <input type="text" id="orgName" name="orgName"/><br   /><br>
+                    <label for="orgDescription">Description:</label><br>
+                    <textarea id="orgDescription" name="orgDescription" rows="4" cols="50" maxlength="500"></textarea><br    /><br>
+                    <label for="orgAddress">Address:</label>
+                    <input type="text" id="orgAddress" name="orgAddress"><br    /><br>
+                    <label for="orgEmail">Email:</label>
+                    <input type="text" id="orgEmail" name="orgEmail"><br    /><br>
+                    <label for="orgPhone">Phone:</label>
+                    <input type="text" id="orgPhone" name="orgPhone"><br    /><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
 </body>
 </html>
