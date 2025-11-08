@@ -1,0 +1,35 @@
+<nav class="bg-[var(--beige)] text-white px-6 py-4 shadow-md text-sm font-medium relative z-50">
+  <div class="max-w-6xl mx-auto flex items-center justify-center space-x-8">
+    <a href="{{ url_for('dashboard') }}" class="text-black transition">Dashboard</a>
+
+    <div class="relative group">
+      <a href="#" class="text-black transition cursor-pointer">Directory</a>
+    </div>
+
+    <a href="{{ url_for('your_orgs') }}" class="text-black transition">Your Orgs</a>
+    <a href="{{ url_for('profile') }}" class="text-black transition">Profile</a>
+    <a href="{{ url_for('landing') }}" class="text-black transition">Logout</a>
+  </div>
+
+  <div class="absolute top-full left-0 w-screen h-[80vh] bg-white shadow-lg
+              opacity-0 invisible transform -translate-y-4
+              group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+              transition-all duration-300 ease-out"
+       id="mega-menu">
+    <div class="max-w-6xl mx-auto grid grid-cols-3 gap-6 p-12">
+      {% for item in categories %}
+      <a href="{{ url_for('directory', category=item.name|lower|replace(' ', '-') ) }}"
+         class="flex flex-col items-center justify-center border rounded-2xl p-6 hover:bg-gray-50 transition cursor-pointer">
+        
+        <svg xmlns="http://www.w3.org/2000/svg"
+             class="w-12 h-12 mb-3 text-blue-500"
+             fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 7h18M3 12h18M3 17h18" />
+        </svg>
+        <span class="text-lg font-medium text-gray-700 hover:text-blue-600">{{ item.name }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</nav>
