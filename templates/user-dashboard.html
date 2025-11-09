@@ -6,6 +6,7 @@
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
 </head>
 <body>
     {% include "_navbar.html" %}
@@ -76,6 +77,6 @@
         </div> 
     </div>
 </div>
-
+  <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
 </body>
 </html>
