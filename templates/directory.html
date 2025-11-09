@@ -14,12 +14,19 @@
     <div class="w-screen h-screen pt-16 flex flex-row">
         <div id="map" class="w-[40vw] h-full"></div>
         <div class="w-[60vw] h-full p-8 flex flex-col">
-            <h2 class="font-semibold mb-3" >{{ category }}</h2>
+            <h2 class="heading-font font-normal text-xl mb-3" >{{ category }}</h2>
             <div class="flex-1 overflow-y-auto flex flex-col gap-4">
                 {% for resource in resources %}
-                <div class="resource-card border p-4 rounded-lg b-white cursor-pointer" data-id="{{ loop.index0 }}" data-coords='{{ resource.coords | tojson }}'>
-                    <h3 class="text-lg font-semibold">{{ resource.name }}</h3>
-                    <p class="text-sm">{{ resource.description }}</p>
+                <div class="resource-card border px-5 py-6 rounded-lg b-white cursor-pointer flex flex-col" data-id="{{ loop.index0 }}" data-coords='{{ resource.coords | tojson }}'>
+                    <div class="flex flex-row justify-between items-center mb-3">
+                        <h3 class="body-font text-lg font-normal">{{ resource.name }}</h3>
+                        <div class="flex flex-row gap-3 items-center mr-2">
+                            <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="Bookmark Icon" class="border-1 border-black border-md w-6 h-auto">
+                            <img src="{{ url_for('static', filename='images/share.png') }}" alt="Share Icon" class="border-1 border-black border-md w-6 h-auto">
+                            <img src="{{ url_for('static', filename='images/comment.png') }}" alt="Comment Icon" class="border-1 bborder-black border-md w-6 h-auto">
+                        </div>
+                    </div>
+                    <p class="body-font text-base font-light">{{ resource.description }}</p>
                 </div>
                 {% endfor %}
             </div>
