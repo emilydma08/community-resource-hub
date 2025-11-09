@@ -10,9 +10,6 @@ resource_categories = [
     {"name": "Category 4", "icon": "clock"},
     {"name": "Category 5", "icon": "chevron-down"},
     {"name": "Category 6", "icon": "arrows-up-down"},
-    {"name": "Category 7", "icon": "arrow-right"},
-    {"name": "Category 8", "icon": "minus"},
-    {"name": "Category 9", "icon": "plus"}
 ]
 
 @app.route('/')
