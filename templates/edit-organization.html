@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <style>
+            div {
+                margin: 2%;
+                padding: 3%;
+            }
+            input, textarea{
+                width: 100%;
+                padding: 10px;
+                margin: 10px 0;
+                box-sizing: border-box;
+                background-color: rgb(234, 234, 234);
+                border: 2px solid black;
+                border-radius: 5px;
+            }
+            input:hover, textarea:hover {
+                background-color: white;
+                outline: none;
+            }
+            input:focus, textarea:focus{
+                background-color: white;
+                outline: none;
+            }
+            textarea {
+                resize: none;
+            }
+        </style>
+</head>
+<body>
+    {% include "_navbar.html" %}
+
+
+    <div style="text-align: left; background-color: rgb(123, 172, 215);">
+            <h2>Edit an Organization</h2>
+            <div style="background-color: rgb(222, 229, 243);">
+                <form name="organizationRegistrationForm" action="{{ url_for('edit_form') }}" method="POST">
+                    <label for="orgName">Organization name:</label>
+                    <input type="text" id="orgName" name="orgName" value="{{ org[0] }}"/><br   /><br>
+                    <label for="orgDescription">Description:</label><br>
+                    <textarea id="orgDescription" name="orgDescription" rows="4" cols="50" maxlength="500">{{ org[1] }}</textarea><br    /><br>
+                    <label for="orgAddress">Address:</label>
+                    <input type="text" id="orgAddress" name="orgAddress" value="{{ org[2] }}"><br    /><br>
+                    <label for="orgEmail">Email:</label>
+                    <input type="text" id="orgEmail" name="orgEmail" value="{{ org[3] }}"><br    /><br>
+                    <label for="orgPhone">Phone:</label>
+                    <input type="text" id="orgPhone" name="orgPhone" value="{{ org[4] }}"><br    /><br>
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+</body>
+</html>
