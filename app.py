@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
+import myorgs
 
 app = Flask(__name__)
 
@@ -32,13 +33,42 @@ def dashboard():
 
 @app.route('/directory/<string:category>', methods=['GET'])
 def directory(category):
-    return render_template('directory.html', category=category, categories=resource_categories)
+    resources = [
+        {"name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.67, -122.12]},
+        {"name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.65, -122.14]},
+        {"name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.64, -122.12]},
+        {"name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.66, -122.11]},
+        {"name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.65, -122.11]},
+        {"name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.66, -122.13]},
+        {"name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.63, -122.14]},
+        {"name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.65, -122.11]},
+    ]
+    return render_template('directory.html', category=category, categories=resource_categories, resources=resources)
+
+@app.route('/edit-organization/<string:org_name>', methods=['GET', 'POST'])
+def edit_organization(org_name):
+    print(org_name)
+
+    if request.method == 'POST':
+        org_description = request.form['org_description']
+        org_address = request.form['org_address']
+        org_email = request.form['org_email']
+        org_phone = request.form['org_phone']
+
+        myorgs.UpdateByName(org_name, org_description, org_address, org_email, org_phone)
+        
+        orgs = myorgs.get()  # Fetch all users
+        return render_template('your-orgs.html', orgs=orgs)
+    
+    org = myorgs.getByName(org_name)
+    return render_template('edit-organization.html', org=org[0])
 
 # Still need route for resource subpage templates
 
 @app.route('/your-organizations', methods=['GET'])
 def your_orgs():
-    return render_template('your-orgs.html', categories=resource_categories)
+    orgs = myorgs.get()
+    return render_template('your-orgs.html', orgs=orgs, categories=resource_categories)
 
 #Still need route for organization subpage templates
 
@@ -46,6 +76,38 @@ def your_orgs():
 def profile():
     return render_template('profile.html', categories=resource_categories)
 
+@app.route('/submit_form', methods=['POST'])
+def submit_form():
+    if request.method == 'POST':
+        name = request.form.get('orgName')
+        description = request.form.get('orgDescription')
+        address = request.form.get('orgAddress')
+        email = request.form.get('orgEmail')
+        phone = request.form.get('orgPhone')
+        print("name:" + str(name))
+        myorgs.insert(name, description, address, email, phone)
+    return redirect(url_for('your_orgs'))
+
+@app.route('/edit_form', methods=['POST'])
+def edit_form():
+    if request.method == 'POST':
+        name = request.form.get('orgName')
+        description = request.form.get('orgDescription')
+        address = request.form.get('orgAddress')
+        email = request.form.get('orgEmail')
+        phone = request.form.get('orgPhone')
+        myorgs.UpdateByName(name, description, address, email, phone)
+    
+        return redirect(url_for('your_orgs'))
+
+@app.route('/delete_form', methods=['POST'])
+def delete_form():
+    name = request.form.get('orgName')
+    if name:
+        print("Deleting:", name)
+        myorgs.deleteByName(name)
+    orgs = myorgs.get()
+    return redirect(url_for('your_orgs'))
 
 if __name__ == '__main__':
     app.run(debug=True)
