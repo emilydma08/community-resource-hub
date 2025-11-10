@@ -6,8 +6,18 @@
     <title>Register</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script type = 'module' src = 'auth.js' defer></script>
 </head>
 <body>
     <h1>Register</h1>
+    <form> 
+        <h3>Create Account</h3>
+        <label for = 'username'>Username</label>
+        <input type = 'email' placeholder = 'Email or Phone' id = 'email' required>
+        <label for = 'password'>Password</label>
+        <input type = 'password' placeholder = 'Password' id = 'password' required>
+        <button id = 'submit' type = 'submit'>Submit</button>
+
+    </form>
 </body>
 </html>

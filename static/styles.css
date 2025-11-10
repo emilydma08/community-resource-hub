@@ -10,6 +10,74 @@
     --heading-font: 'Merriweather', serif;
 }
 
+h1{
+    font-size: 50pt !important;
+    padding: 15px;
+}
+
+#header {
+    font-size: 30pt !important;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-right: 15px;
+    margin-left: 10px;
+}
+#content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#event-highlights {
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: 15px;
+    padding: 20px;
+    box-shadow: 5px 10px 20px rgb(133, 133, 133);
+    align-items: center;
+    max-height: 500px;
+    overflow-y: auto;
+
+}
+
+.event-card {
+    background-color: white;
+    margin: 15px;
+    padding: 30px;
+    border-radius: 7px;
+    width: 500px;
+}
+
+.event-card h3 {
+    font-size: 30px !important;
+}
+
+#event-highlights h2 {
+    font-size: 30px !important;
+}
+#details {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#details #description {
+    width: 500px;
+    margin: 5px;
+}
+
+#org-recs {
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    padding: 20px;
+    box-shadow: 5px 10px 20px rgb(133, 133, 133);
+    align-items: center;
+    max-height: 500px;
+}
 .nav-font {
   font-family: var(--nav-font);
 }
