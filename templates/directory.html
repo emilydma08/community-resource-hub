@@ -6,17 +6,108 @@
     <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha512‑..." crossorigin=""/>
 </head>
 <body>
-    <nav class="bg-[var(--beige)] text-white px-6 py-4 flex items-center justify-center space-x-8 shadow-md text-sm font-medium">
-        <a href="{{ url_for('dashboard') }}" class="text-black transition">Dashboard</a>
-        <a href="{{ url_for('directory') }}" class="text-black transition">Directory</a>
-        <a href="{{ url_for('your_orgs') }}" class="text-black transition">Your Orgs</a>
-        <a href="{{ url_for('profile') }}" class="text-black transition">Profile</a>
-        <a href="{{ url_for('landing') }}" class="text-black transition">Logout</a>
-    </nav>
+    {% include "_navbar.html" %}
 
+    <div class="w-screen h-screen pt-16 flex flex-row">
+        <div id="map" class="w-[40vw] h-full"></div>
+        <div class="w-[60vw] h-full p-8 flex flex-col">
+            <h2 class="heading-font font-normal text-xl mb-3" >{{ category }}</h2>
+            <div class="flex-1 overflow-y-auto flex flex-col gap-4">
+                {% for resource in resources %}
+                <div class="resource-card border px-5 py-6 rounded-lg b-white cursor-pointer flex flex-col" data-id="{{ loop.index0 }}" data-coords='{{ resource.coords | tojson }}'>
+                    <div class="flex flex-row justify-between items-center mb-3">
+                        <h3 class="body-font text-lg font-normal">{{ resource.name }}</h3>
+                        <div class="flex flex-row gap-3 items-center mr-2">
+                            <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="Bookmark Icon" class="border-1 border-black border-md w-6 h-auto">
+                            <img src="{{ url_for('static', filename='images/share.png') }}" alt="Share Icon" class="border-1 border-black border-md w-6 h-auto">
+                            <img src="{{ url_for('static', filename='images/comment.png') }}" alt="Comment Icon" class="border-1 bborder-black border-md w-6 h-auto">
+                        </div>
+                    </div>
+                    <p class="body-font text-base font-light">{{ resource.description }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
-    <h1>Dir</h1>
+  <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha512‑..." crossorigin=""></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const mapElement = document.getElementById("map");
+        if (!mapElement){
+            return;
+        }
+
+        const resourceCards = document.querySelectorAll(".resource-card");
+        const resourceData = Array.from(resourceCards).map(card => ({
+            id: card.dataset.id,
+            name: card.querySelector("h3").textContent,
+            coords: JSON.parse(card.dataset.coords || "[]"),
+            cardElement: card
+        }));
+
+        const map = L.map('map').setView([47.673988, -122.121513], 12);
+
+        L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=LNbdm4h4Z8EJFZpmNIQS', {
+            attribution: '&copy; MapTiler &copy; OpenStreetMap',
+            tileSize: 512,
+            zoomOffset: -1,
+            minZoom: 12,
+            maxZoom: 18
+        }).addTo(map);
+
+        let activeCard = null;
+
+        const markers = resourceData.map(resource => {
+            const marker = L.marker(resource.coords).addTo(map).bindPopup(`<b>${resource.name}</b>`);
+            marker.resourceId = resource.id;
+
+            marker.on("click", () => {
+                if (activeCard) activeCard.classList.remove("bg-blue-100", "border-blue-500");
+
+                resource.cardElement.classList.add("bg-blue-100", "border-blue-500");
+                activeCard = resource.cardElement;
+
+                resource.cardElement.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+
+            marker.on("popupclose", () => {
+                if (activeCard === resource.cardElement) {
+                    activeCard.classList.remove("bg-blue-100", "border-blue-500");
+                    activeCard = null;
+                }
+            });
+
+            return marker;
+        });
+
+        map.on("click", () => {
+            if (activeCard) {
+                activeCard.classList.remove("bg-blue-100", "border-blue-500");
+                activeCard = null;
+            }
+        });
+
+        resourceCards.forEach((card, index) => {
+            card.addEventListener("click", () => {
+                const marker = markers[index];
+                marker.openPopup();
+
+                if (activeCard){
+                    activeCard.classList.remove("bg-blue-100", "border-blue-500");
+                } 
+
+                const resource = resourceData[index];
+                resource.cardElement.classList.add("bg-blue-100", "border-blue-500");
+                activeCard = resource.cardElement;
+                resource.cardElement.scrollIntoView({ behavior: "smooth", block: "center" });
+            });
+        });
+    });
+  </script>
 </body>
 </html>
