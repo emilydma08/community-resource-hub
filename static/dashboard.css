@@ -1,15 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-
-:root{
-    --red: #c2410e;
-    --light-red: #e76d59;
-    --blue: #37718b;
-    --beige: #fcf6ec;
-    --nav-font: 'Montserrat', sans-serif;
-    --body-font: 'Roboto', sans-serif;
-    --heading-font: 'Merriweather', serif;
-}
-
 h1{
     font-size: 50pt !important;
     padding: 15px;
@@ -20,13 +8,10 @@ h1{
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    margin-right: 15px;
-    margin-left: 10px;
 }
 #content{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
 }
 #event-highlights {
     background-color: gray;
@@ -65,7 +50,6 @@ h1{
 
 #details #description {
     width: 500px;
-    margin: 5px;
 }
 
 #org-recs {
@@ -78,14 +62,27 @@ h1{
     align-items: center;
     max-height: 500px;
 }
-.nav-font {
-  font-family: var(--nav-font);
+
+.org {
+    background-color: white;
+    margin: 15px;
+    padding: 30px;
+    border-radius: 7px;
+    width: 500px;
+    padding: 15px;     
 }
 
-.heading-font {
-  font-family: var(--heading-font);
+.org h2 {
+    font-size: 30px !important;
 }
 
-.body-font {
-  font-family: var(--body-font);
+#org-recs h2 {
+    font-size: 30px;
+}
+
+#orgs {
+    display: flex;
+    flex-direction: row;
+    max-width: 600px;
+    overflow-x: auto;
 }
