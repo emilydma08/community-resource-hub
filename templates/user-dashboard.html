@@ -80,7 +80,7 @@
   <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
 </body>
 <script type = 'module'>
-    import {auth, onAuthstateChanged} from "{{ url_for('static', filename='js/firebase-config.js') }}";
+    import {auth, onAuthstateChanged} from "{{ url_for('static', filename='auth.js') }}";
     document.addEventListener("DOMContentLoaded", () => {
        if(!user) {
         window.location.href = "{{ url_for('register') }}";
