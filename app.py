@@ -25,13 +25,13 @@ resources = [
 
 @app.route('/')
 def landing():
-    return render_template('index.html', categories=resource_categories)
+    return render_template('register.html')
 
 @app.route('/login', methods=['GET'])
 def login():
     return render_template('login.html', categories=resource_categories)
 
-@app.route('/register', methods=['GET'])
+@app.route('/register', methods=['GET', 'POST'])
 def register():
     return render_template('register.html', categories=resource_categories)
 
