@@ -1,8 +1,27 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
-import psycopg2
 import myorgs
 
 app = Flask(__name__)
+
+resource_categories = [
+    {"name": "Category 1", "icon": "bars-3"},
+    {"name": "Category 2", "icon": "plus"},
+    {"name": "Category 3", "icon": "check"},
+    {"name": "Category 4", "icon": "clock"},
+    {"name": "Category 5", "icon": "chevron-down"},
+    {"name": "Category 6", "icon": "arrows-up-down"},
+]
+
+resources = [
+    {"id": 0, "name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.67, -122.12]},
+    {"id": 1, "name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.65, -122.14]},
+    {"id": 2, "name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.64, -122.12]},
+    {"id": 3, "name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.66, -122.11]},
+    {"id": 4, "name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.65, -122.11]},
+    {"id": 5, "name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.66, -122.13]},
+    {"id": 6, "name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.63, -122.14]},
+    {"id": 7, "name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.65, -122.11]},
+]
 
 @app.route('/')
 def landing():
@@ -10,19 +29,28 @@ def landing():
 
 @app.route('/login', methods=['GET'])
 def login():
-    return render_template('login.html')
+    return render_template('login.html', categories=resource_categories)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    return render_template('register.html')
+    return render_template('register.html', categories=resource_categories)
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    return render_template('user-dashboard.html')
+    return render_template('user-dashboard.html', categories=resource_categories)
 
-@app.route('/directory', methods=['GET'])
-def directory():
-    return render_template('directory.html')
+@app.route('/directory/<string:category>', methods=['GET'])
+def directory(category):
+    return render_template('directory.html', category=category, categories=resource_categories, resources=resources)
+
+@app.route('/resource/<int:resource_id>', methods=['GET'])
+def resource_subpage(resource_id):
+    resource = None
+    for r in resources:
+        if r['id'] == resource_id:
+            resource = r
+            break
+    return render_template('resource-subpage.html', resource=resource, categories=resource_categories)
 
 @app.route('/edit-organization/<string:org_name>', methods=['GET', 'POST'])
 def edit_organization(org_name):
@@ -42,18 +70,17 @@ def edit_organization(org_name):
     org = myorgs.getByName(org_name)
     return render_template('edit-organization.html', org=org[0])
 
-# Still need route for resource subpage templates
 
 @app.route('/your-organizations', methods=['GET'])
 def your_orgs():
     orgs = myorgs.get()
-    return render_template('your-orgs.html', orgs=orgs)
+    return render_template('your-orgs.html', orgs=orgs, categories=resource_categories)
 
 #Still need route for organization subpage templates
 
 @app.route('/profile', methods=['GET'])
 def profile():
-    return render_template('profile.html')
+    return render_template('profile.html', categories=resource_categories)
 
 @app.route('/submit_form', methods=['POST'])
 def submit_form():

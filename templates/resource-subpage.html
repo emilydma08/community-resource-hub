@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resource Subpage</title>
+    <title>{{ resource.name }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <nav class="bg-[var(--beige)] text-white px-6 py-4 flex items-center justify-center space-x-8 shadow-md text-sm font-medium">
-        <a href="{{ url_for('dashboard') }}" class="text-black transition">Dashboard</a>
-        <a href="{{ url_for('directory') }}" class="text-black transition">Directory</a>
-        <a href="{{ url_for('your_orgs') }}" class="text-black transition">Your Orgs</a>
-        <a href="{{ url_for('profile') }}" class="text-black transition">Profile</a>
-        <a href="{{ url_for('landing') }}" class="text-black transition">Logout</a>
-    </nav>
+    {% include "_navbar.html" %}
 
-    <h1>Resource Subpage</h1>
+    <h1 class="text-3xl font-bold mb-4">{{ resource.name }}</h1>
+    <p class="text-lg mb-2">{{ resource.description }}</p>
+    
+    <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
+
 </body>
 </html>
