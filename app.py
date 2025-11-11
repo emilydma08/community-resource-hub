@@ -12,6 +12,17 @@ resource_categories = [
     {"name": "Category 6", "icon": "arrows-up-down"},
 ]
 
+resources = [
+    {"id": 0, "name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.67, -122.12]},
+    {"id": 1, "name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.65, -122.14]},
+    {"id": 2, "name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.64, -122.12]},
+    {"id": 3, "name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.66, -122.11]},
+    {"id": 4, "name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.65, -122.11]},
+    {"id": 5, "name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.66, -122.13]},
+    {"id": 6, "name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.63, -122.14]},
+    {"id": 7, "name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.65, -122.11]},
+]
+
 @app.route('/')
 def landing():
     return render_template('index.html', categories=resource_categories)
@@ -30,17 +41,16 @@ def dashboard():
 
 @app.route('/directory/<string:category>', methods=['GET'])
 def directory(category):
-    resources = [
-        {"name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.67, -122.12]},
-        {"name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.65, -122.14]},
-        {"name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.64, -122.12]},
-        {"name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.66, -122.11]},
-        {"name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.65, -122.11]},
-        {"name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.66, -122.13]},
-        {"name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.63, -122.14]},
-        {"name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.65, -122.11]},
-    ]
     return render_template('directory.html', category=category, categories=resource_categories, resources=resources)
+
+@app.route('/resource/<int:resource_id>', methods=['GET'])
+def resource_subpage(resource_id):
+    resource = None
+    for r in resources:
+        if r['id'] == resource_id:
+            resource = r
+            break
+    return render_template('resource-subpage.html', resource=resource, categories=resource_categories)
 
 @app.route('/edit-organization/<string:org_name>', methods=['GET', 'POST'])
 def edit_organization(org_name):
@@ -60,7 +70,6 @@ def edit_organization(org_name):
     org = myorgs.getByName(org_name)
     return render_template('edit-organization.html', org=org[0])
 
-# Still need route for resource subpage templates
 
 @app.route('/your-organizations', methods=['GET'])
 def your_orgs():

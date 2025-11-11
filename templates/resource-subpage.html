@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resource Subpage</title>
+    <title>{{ resource.name }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     {% include "_navbar.html" %}
 
-    <h1>Resource Subpage</h1>
+    <h1 class="text-3xl font-bold mb-4">{{ resource.name }}</h1>
+    <p class="text-lg mb-2">{{ resource.description }}</p>
+    
     <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
 
 </body>
