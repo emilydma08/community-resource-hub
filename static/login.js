@@ -37,19 +37,20 @@ document.addEventListener("DOMContentLoaded", () => {
   })
   .catch((error) => {
     const errorCode = error.code;
-    if (errorCode === 'auth/user-not-found') {
-        alert('No account found with this email');
-        emailInput.value = '';
-        passwordInput.value = '';
-    } else if (errorCode === 'auth/wrong-password') {
-        alert('Incorrect password');
-        emailInput.value = '';
-        passwordInput.value = '';
+    console.log(error)
+    let message = '';
+      if (errorCode.includes('user-not-found')) {
+        message = 'No account found with this email';
+    } else if (errorCode.includes('wrong-password')) {
+        message = 'Incorrect password';
+    } else if (errorCode.includes('invalid-email')) {
+        message = 'Not a valid email';
     } else {
-        alert('Something went wrong. Please try again later');
-        emailInput.value = '';
-        passwordInput.value = '';
+         message = 'Something went wrong. Please try again later';
     }
+    alert(message);
+    emailInput.value = '';
+    passwordInput.value = '';
   });
 
   });
