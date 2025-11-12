@@ -6,6 +6,8 @@
     <title>{{ resource.name }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+
 </head>
 <body>
     {% include "_navbar.html" %}
@@ -36,9 +38,7 @@
             <button class="icon-btn">▶️</button>
             <button class="icon-btn">➡️</button>
         </div>
-        <div class="bg-gray-300 h-40 flex items-center justify-center rounded-xl shadow-sm">
-            <p class="text-gray-700">[ Map Placeholder ]</p>
-        </div>
+        <div style="height: 250px;" id="map"></div>
         </section>
     </main>
 
@@ -211,6 +211,27 @@
     }
     });
     </script>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mapElement = document.getElementById("map");
+            const resourceCoords = {{ resource.coords | tojson }};
+            const map = L.map('map').setView(resourceCoords, 15);
+            
+
+            L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=LNbdm4h4Z8EJFZpmNIQS', {
+                attribution: '&copy; MapTiler &copy; OpenStreetMap',
+                tileSize: 512,
+                zoomOffset: -1,
+                minZoom: 12,
+                maxZoom: 18
+            }).addTo(map);
+            L.marker(resourceCoords).addTo(map)
+                .bindPopup(`<b>{{ resource.name }}</b>`, {maxWidth: 200, minWidth: 100, autoPan: true}).openPopup();
+        });
+    </script>
+
 
 
     
