@@ -5,252 +5,484 @@
       "name": "Kinwell Health",
       "category": "Health & Wellness",
       "description": "A holistic primary‑care clinic that integrates physical care, behavioral health, fitness coaching and wellness support for patients of all ages.",
-      "coords": [47.6640, -122.1270]
+      "coords": [47.6640, -122.1270],
+      "hours": {
+        "Mon": ["08:00", "17:00"],
+        "Tue": ["08:00", "17:00"],
+        "Wed": ["08:00", "17:00"],
+        "Thu": ["08:00", "17:00"],
+        "Fri": ["08:00", "17:00"],
+        "Saturday": null,
+        "Sunday": null
+      },
+      "address": "7330 164th Ave. NE Suite #E160 Redmond, WA 98052",
+      "phone": "(833) 411-5469",
+      "email": "info@kinwellhealth.com",
+      "website": "https://kinwellhealth.com/clinics/redmond/",
+      "tags": ["health", "wellness", "primary_care", "behavioral_health", "fitness", "holistic"]
     },
     {
       "id": 2,
       "name": "HealthPoint",
       "category": "Health & Wellness",
       "description": "A community health center offering medical, dental and behavioral‑health services to under‑served and insured patients alike.",
-      "coords": [47.6735, -122.1160]
+      "coords": [47.6735, -122.1160],
+      "hours": {
+        "Mon": ["08:00", "19:00"],
+        "Tue": ["08:00", "19:00"],
+        "Wed": ["08:00", "19:00"],
+        "Thu": ["08:00", "17:00"],
+        "Fri": ["08:00", "17:00"],
+        "Saturday": ["08:00", "17:00"],
+        "Sunday": ["08:00", "17:00"]
+      },
+      "address": "16255 NE 87th Street, Ste 150, Bldg. A-Forest, Redmond, WA 98052",
+      "phone": "(425) 882 1697",
+      "email": null,
+      "website": "https://www.healthpointchc.org/find-clinics/redmond",
+      "tags": ["health", "wellness", "community", "medical", "dental", "behavioral_health"]
     },
     {
       "id": 3,
       "name": "LightHeart Psychological Associates",
       "category": "Health & Wellness",
       "description": "Provides comprehensive mental‑health services including therapy, psychiatry and telehealth for children, teens and adults.",
-      "coords": [47.6770, -122.1262]
+      "coords": [47.6770, -122.1262],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["health", "wellness", "mental_health", "therapy", "psychiatry", "telehealth"]
     },
     {
       "id": 4,
       "name": "Overlake Clinics",
       "category": "Health & Wellness",
       "description": "A primary‑care practice affiliated with a hospital system, delivering family‑health services in the Redmond area.",
-      "coords": [47.6740, -122.1210]
+      "coords": [47.6740, -122.1210],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["health", "wellness", "primary_care", "family_health"]
     },
     {
       "id": 5,
       "name": "Living Well Health Center",
       "category": "Health & Wellness",
       "description": "A wellness‑center offering interdisciplinary care combining counseling, psychiatry and holistic wellness support.",
-      "coords": [47.64, -122.13]
+      "coords": [47.64, -122.13],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["health", "wellness", "counseling", "psychiatry", "holistic"]
     },
     {
       "id": 6,
       "name": "SOUND Behavioral Health",
       "category": "Health & Wellness",
       "description": "A behavioral‑health provider offering counseling and case‑management services for youth and adults in King County including Redmond.",
-      "coords": [47.68, -122.12]
+      "coords": [47.68, -122.12],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["health", "wellness", "behavioral_health", "counseling", "case_management", "youth"]
     },
     {
       "id": 7,
       "name": "C2 Education of Redmond",
       "category": "Education & Youth",
       "description": "A tutoring and college‑prep center offering personalized K‑12 tutoring, test‑prep and college application counseling.",
-      "coords": [47.6712, -122.1188]
+      "coords": [47.6712, -122.1188],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["education", "youth", "tutoring", "college_prep", "test_prep", "k12"]
     },
     {
       "id": 8,
       "name": "Club Z! Tutoring",
       "category": "Education & Youth",
       "description": "In‑home & online tutoring covering math, science, test‑prep, reading and foreign languages for Redmond youth.",
-      "coords": [47.68, -122.12]
+      "coords": [47.68, -122.12],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["education", "youth", "tutoring", "math", "science", "test_prep", "reading", "languages"]
     },
     {
       "id": 9,
       "name": "Stemtree",
       "category": "Education & Youth",
       "description": "A STEM‑enrichment program in Redmond offering after‑school, tutoring, coding and hands‑on science activities to help kids build confidence in math and engineering.",
-      "coords": [47.628, -122.102]
+      "coords": [47.628, -122.102],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["education", "youth", "STEM", "tutoring", "coding", "science", "after_school", "engineering"]
     },
     {
       "id": 10,
       "name": "Marymoor Arts & Sciences Center (MASC)",
       "category": "Education & Youth",
       "description": "A planned multi‑use STEAM hub in Redmond offering arts and science programming spaces for youth and families.",
-      "coords": [47.68, -122.12]
+      "coords": [47.68, -122.12],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["education", "youth", "STEAM", "arts", "science", "programming", "families"]
     },
     {
       "id": 11,
       "name": "Redmond Senior & Community Center: Youth/Intergen Programs",
       "category": "Education & Youth",
       "description": "Offers intergenerational programming and youth engagement opportunities within the senior‑community center context.",
-      "coords": [47.6804, -122.1312]
+      "coords": [47.6804, -122.1312],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["education", "youth", "intergenerational", "community", "senior_services"]
     },
     {
       "id": 12,
       "name": "Marymoor Community Garden Association",
       "category": "Education & Youth",
       "description": "Provides garden plots and youth mentoring through gardening activities and food‑bank collaborations in Redmond.",
-      "coords": [47.6637, -122.1202]
+      "coords": [47.6637, -122.1202],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["education", "youth", "gardening", "mentoring", "community", "volunteer"]
     },
     {
       "id": 13,
       "name": "Hopelink: Redmond Market & Service Center",
       "category": "Social Services & Support",
       "description": "A non‑profit service hub offering food‑market access, employment support, utility and housing assistance for low‑income residents.",
-      "coords": [47.6910, -122.1100]
+      "coords": [47.6910, -122.1100],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["social_services", "support", "nonprofit", "food_assistance", "housing", "employment"]
     },
     {
       "id": 14,
       "name": "Together Center",
       "category": "Social Services & Support",
       "description": "A co‑located resource center where multiple service providers collaborate to help residents navigate social‑support systems.",
-      "coords": [47.6940, -122.1500]
+      "coords": [47.6940, -122.1500],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["social_services", "support", "community", "nonprofit", "resource_center"]
     },
     {
       "id": 15,
       "name": "AlSadaqa",
       "category": "Social Services & Support",
       "description": "Provides rent, utility, transportation and other direct assistance to refugees, single‑mothers and under‑served households in the Redmond area.",
-      "coords": [47.6657, -122.1065]
+      "coords": [47.6657, -122.1065],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["social_services", "support", "refugees", "assistance", "low_income", "community"]
     },
     {
       "id": 16,
       "name": "Kindering Center",
       "category": "Social Services & Support",
-      "description": "Offers early‑intervention, family‐support and parenting‑education services for children with developmental delays or in transitional housing to strengthen family‑stability.",
-      "coords": [47.6920, -122.1230]
+      "description": "Offers early‑intervention, family‑support and parenting‑education services for children with developmental delays or in transitional housing to strengthen family‑stability.",
+      "coords": [47.6920, -122.1230],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["social_services", "support", "early_intervention", "family_support", "parenting", "children"]
     },
     {
       "id": 17,
       "name": "Emerald Heights Life‑Plan Community",
       "category": "Social Services & Support",
       "description": "A non‑profit senior living community offering housing, care and family‑support services for older adults and their families.",
-      "coords": [47.70, -122.14]
+      "coords": [47.70, -122.14],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["social_services", "support", "senior_living", "housing", "nonprofit", "care"]
     },
     {
       "id": 18,
       "name": "TRedmond Senior & Community Center: Senior Services",
       "category": "Social Services & Support",
       "description": "Provides recreation, nutrition, volunteer engagement and wellness support for adults 55+ and families in Redmond.",
-      "coords": [47.6804, -122.1312]
+      "coords": [47.6804, -122.1312],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["social_services", "support", "seniors", "recreation", "volunteer", "wellness"]
     },
     {
       "id": 19,
       "name": "Marymoor Park",
       "category": "Arts, Culture, & Recreation",
       "description": "A large regional park offering trails, playgrounds, outdoor concerts and community recreation for all ages.",
-      "coords": [47.6637, -122.1202]
+      "coords": [47.6637, -122.1202],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["arts", "culture", "recreation", "park", "trails", "playgrounds", "concerts"]
     },
     {
       "id": 20,
       "name": "Marymoor Arts & Sciences Center (MASC)",
       "category": "Arts, Culture, & Recreation",
       "description": "A dynamic cultural and STEAM hub offering community arts, science programming and event spaces in Redmond.",
-      "coords": [47.68, -122.12]
+      "coords": [47.68, -122.12],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["arts", "culture", "recreation", "STEAM", "community", "arts_programming", "science"]
     },
     {
       "id": 21,
       "name": "Redmond Historical Society",
       "category": "Arts, Culture, & Recreation",
       "description": "A nonprofit preserving the local history through museum exhibits, community events, and heritage programming that complements the city’s cultural fabric.",
-      "coords": [47.6800, -122.1200]
+      "coords": [47.6800, -122.1200],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["arts", "culture", "recreation", "history", "museum", "community", "nonprofit"]
     },
     {
       "id": 22,
       "name": "VALA Eastside (Venues for Artists in the Local Area)",
       "category": "Arts, Culture, & Recreation",
       "description": "A nonprofit art‑space that connects artists and community through exhibits, workshops and creative programming.",
-      "coords": [47.6738, -122.1247]
+      "coords": [47.6738, -122.1247],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["arts", "culture", "recreation", "nonprofit", "art_space", "workshops", "community"]
     },
     {
       "id": 23,
       "name": "Redmond Arts & Culture Commission",
       "category": "Arts, Culture, & Recreation",
       "description": "A city advisory body that supports public‑art initiatives, rotating exhibits, and cultural events across Redmond to enrich community engagement.",
-      "coords": [47.6730, -122.1210]
+      "coords": [47.6730, -122.1210],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["arts", "culture", "recreation", "city", "advisory", "public_art", "community"]
     },
     {
       "id": 24,
       "name": "Rotary Club of Redmond",
       "category": "Arts, Culture, & Recreation",
       "description": "A service and social organization that also organizes cultural, recreation and community‑event programming in Redmond.",
-      "coords": [47.6770, -122.1260]
+      "coords": [47.6770, -122.1260],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["arts", "culture", "recreation", "community", "events", "volunteer", "service"]
     },
     {
       "id": 25,
       "name": "Eastside Audubon Society",
       "category": "Environmental & Sustainability",
       "description": "A wildlife‑conservation chapter engaging Redmond and Eastside residents in habitat restoration, bird‑walks and environmental education.",
-      "coords": [47.6880, -122.1080]
+      "coords": [47.6880, -122.1080],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["environment", "sustainability", "wildlife", "conservation", "volunteer", "education"]
     },
     {
       "id": 26,
       "name": "Marymoor Community Garden Association",
       "category": "Environmental & Sustainability",
       "description": "A community‑gardening organization fostering sustainable food‑production and volunteer engagement within a local garden in Redmond.",
-      "coords": [47.6637, -122.1202]
+      "coords": [47.6637, -122.1202],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["environment", "sustainability", "gardening", "food_production", "community", "volunteer"]
     },
     {
       "id": 27,
       "name": "Environmental Sustainability Advisory Committee",
       "category": "Environmental & Sustainability",
       "description": "A city‑based advisory body guiding environmental‑action planning and community engagement in sustainable practices.",
-      "coords": [47.68, -122.12]
+      "coords": [47.68, -122.12],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["environment", "sustainability", "city", "advisory", "community"]
     },
     {
       "id": 28,
       "name": "Juel Park Community Gardens",
       "category": "Environmental & Sustainability",
       "description": "Local garden plots promoting sustainable living, food‑production, and community garden education in Redmond.",
-      "coords": [47.7130, -122.1210]
+      "coords": [47.7130, -122.1210],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["environment", "sustainability", "gardening", "food_production", "community", "education"]
     },
     {
       "id": 29,
       "name": "Greenroads Foundation",
       "category": "Environmental & Sustainability",
       "description": "A non‑profit dedicated to advancing sustainable transportation infrastructure and reducing environmental impact through its Greenroads Rating System.",
-      "coords": [47.6850, -122.1210]
+      "coords": [47.6850, -122.1210],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["environment", "sustainability", "transportation", "nonprofit"]
     },
     {
       "id": 30,
       "name": "Green Redmond Partnership",
       "category": "Environmental & Sustainability",
       "description": "A city‑community collaboration that mobilizes volunteers to restore urban forest health, plant trees and shrubs across Redmond parks and natural spaces.",
-      "coords": [47.6701, -122.1182]
+      "coords": [47.6701, -122.1182],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["environment", "sustainability", "community", "volunteer", "trees", "parks"]
     },
     {
       "id": 31,
       "name": "Open Kitchen (Redmond United Methodist Church)",
       "category": "Community Events & Volunteering",
       "description": "A weekly community meal program where volunteers serve warm dinners, engage in community building, and support food security at the church in Redmond.",
-      "coords": [47.6835, -122.1280]
+      "coords": [47.6835, -122.1280],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["community", "volunteering", "food", "meal_program", "church"]
     },
     {
       "id": 32,
       "name": "Redmond Citizen Corps Council",
       "category": "Community Events & Volunteering",
       "description": "A volunteer‑led nonprofit coordinating emergency‑preparedness, citizen‑safety training and neighborhood watch efforts in Redmond to build resilient communities.",
-      "coords": [47.6760, -122.1210]
+      "coords": [47.6760, -122.1210],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["community", "volunteering", "nonprofit", "emergency", "safety", "training"]
     },
     {
       "id": 33,
       "name": "Kiwanis Club of Redmond Washington Foundation",
       "category": "Community Events & Volunteering",
       "description": "Focuses on youth and family service initiatives – volunteers help organize events and support programs aimed at food insecurity and youth development in Redmond.",
-      "coords": [47.6730, -122.1210]
+      "coords": [47.6730, -122.1210],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["community", "volunteering", "youth", "family", "service", "events"]
     },
     {
       "id": 34,
       "name": "Eastside Food Not Bombs",
       "category": "Community Events & Volunteering",
       "description": "A volunteer group gathering and distributing free meals every Tuesday in Redmond (near the transit center) as part of a community‑solidarity and service effort",
-      "coords": [47.6730, -122.1210]
+      "coords": [47.6730, -122.1210],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["community", "volunteering", "food", "free_meals", "solidarity"]
     },
     {
       "id": 35,
       "name": "Redmond School Break Food Box Program",
       "category": "Community Events & Volunteering",
       "description": "A program mobilizing volunteers to pack and distribute food boxes during school breaks to families experiencing food insecurity in the Redmond area.",
-      "coords": [47.6670, -122.1200]
+      "coords": [47.6670, -122.1200],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["community", "volunteering", "food", "school_break", "food_boxes", "families"]
     },
     {
       "id": 36,
       "name": "Assistance League of the Eastside",
       "category": "Community Events & Volunteering",
       "description": "A charitable nonprofit chapter that engages volunteers to provide programs supporting children, schools, and survivors of assault in the Eastside region.",
-      "coords": [47.7350, -122.1080]
+      "coords": [47.7350, -122.1080],
+      "hours": {},
+      "address": "",
+      "phone": "",
+      "email": "",
+      "website": "",
+      "tags": ["community", "volunteering", "nonprofit", "children", "schools", "assault_survivors"]
     }
   ]
 }
