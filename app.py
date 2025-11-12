@@ -65,16 +65,16 @@ def edit_organization(org_name):
         myorgs.UpdateByName(org_name, org_description, org_address, org_email, org_phone)
         
         orgs = myorgs.get()  # Fetch all users
-        return render_template('your-orgs.html', orgs=orgs)
+        return render_template('my-orgs.html', orgs=orgs)
     
     org = myorgs.getByName(org_name)
     return render_template('edit-organization.html', org=org[0])
 
 
-@app.route('/your-organizations', methods=['GET'])
-def your_orgs():
+@app.route('/my-organizations', methods=['GET'])
+def my_orgs():
     orgs = myorgs.get()
-    return render_template('your-orgs.html', orgs=orgs, categories=resource_categories)
+    return render_template('my-orgs.html', orgs=orgs, categories=resource_categories)
 
 #Still need route for organization subpage templates
 
@@ -92,7 +92,7 @@ def submit_form():
         phone = request.form.get('orgPhone')
         print("name:" + str(name))
         myorgs.insert(name, description, address, email, phone)
-    return redirect(url_for('your_orgs'))
+    return redirect(url_for('my_orgs'))
 
 @app.route('/edit_form', methods=['POST'])
 def edit_form():
@@ -104,7 +104,7 @@ def edit_form():
         phone = request.form.get('orgPhone')
         myorgs.UpdateByName(name, description, address, email, phone)
     
-        return redirect(url_for('your_orgs'))
+        return redirect(url_for('my_orgs'))
 
 @app.route('/delete_form', methods=['POST'])
 def delete_form():
@@ -113,7 +113,7 @@ def delete_form():
         print("Deleting:", name)
         myorgs.deleteByName(name)
     orgs = myorgs.get()
-    return redirect(url_for('your_orgs'))
+    return redirect(url_for('my_orgs'))
 
 if __name__ == '__main__':
     app.run(debug=True)
