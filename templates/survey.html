@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ resource.name }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='survey.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Survey</h1>
+    <form id = 'survey-form'>
+        <div class = 'q active'>
+            <h3>Favorite Categories of Resources</h3>
+            <p>Select all that apply</p>
+            <label><input type="checkbox" name="categories" value="Education"> Education</label><br>
+            <label><input type="checkbox" name="categories" value="Health"> Health</label><br>
+            <label><input type="checkbox" name="categories" value="Safety"> Safety</label><br>
+            <label><input type="checkbox" name="categories" value="Parks"> Parks</label><br>
+            <label><input type="checkbox" name="categories" value="Food"> Food</label><br>
+            <label><input type="checkbox" name="categories" value="Technology"> Technology</label><br>
+            <button type="button" class="next">Next</button>
+        </div>
+
+        <div class = 'q'>
+            <h3>Resource type Preferences</h3>
+            <p>Select all that apply</p>
+            <label><input type="checkbox" name="event" value="Workshops"> Workshops</label><br>
+            <label><input type="checkbox" name="event" value="Articles"> Articles</label><br>
+            <label><input type="checkbox" name="event" value="Community-wide Events"> Community-wide Events</label><br>
+            <label><input type="checkbox" name="event" value="Volunteering"> Volunteering</label><br>
+            <button type="button" class="back">Back</button>
+            <button type="button" class="next">Next</button>
+        </div>
+
+        <div class = 'q'>
+            <h3>Personal Interests</h3>
+            <p>Select all that apply</p>
+            <label><input type="checkbox" name="event" value="STEM"> STEM</label><br>
+            <label><input type="checkbox" name="event" value="Art"> Art</label><br>
+            <label><input type="checkbox" name="event" value="Health"> Health</label><br>
+            <label><input type="checkbox" name="event" value="Community-service"> Community Service</label><br>
+            <button type="button" class="back">Back</button>
+            <button type="submit">Submit</button>
+        </div>
+
+
+    </form>
+</body>
+ <script type="module" src="{{ url_for('static', filename='survey.js') }}"></script>
+</html>

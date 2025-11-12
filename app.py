@@ -35,6 +35,10 @@ def login():
 def register():
     return render_template('register.html', categories=resource_categories)
 
+@app.route('/survey', methods=['GET'])
+def survey():
+    return render_template('survey.html', categories=resource_categories)
+
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
     return render_template('user-dashboard.html', categories=resource_categories)

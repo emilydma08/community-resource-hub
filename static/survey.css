@@ -1,0 +1,6 @@
+.q {
+  display: none;
+}
+.q.active {
+  display: block;
+}
