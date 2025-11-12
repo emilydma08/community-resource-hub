@@ -1,26 +1,27 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import myorgs
+import json
+import os
+from urllib.parse import unquote
 
 app = Flask(__name__)
 
-resource_categories = [
-    {"name": "Category 1", "icon": "bars-3"},
-    {"name": "Category 2", "icon": "plus"},
-    {"name": "Category 3", "icon": "check"},
-    {"name": "Category 4", "icon": "clock"},
-    {"name": "Category 5", "icon": "chevron-down"},
-    {"name": "Category 6", "icon": "arrows-up-down"},
-]
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "data.json")
 
-resources = [
-    {"id": 0, "name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.67, -122.12]},
-    {"id": 1, "name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.65, -122.14]},
-    {"id": 2, "name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.64, -122.12]},
-    {"id": 3, "name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.66, -122.11]},
-    {"id": 4, "name": "Food Bank", "description": "This food bank provides free meals for low-income families. Residents can also donate canned or boxed food", "coords": [47.65, -122.11]},
-    {"id": 5, "name": "Animal Shelter", "description": "At this animal shelter residents can adopt pets, as well as volunteer their time to improve the wellbeing of animals", "coords": [47.66, -122.13]},
-    {"id": 6, "name": "Community Clinic", "description": "This community clinic provides affordable/free healthcare for residents who cannot afford health insurance and/or a hospital", "coords": [47.63, -122.14]},
-    {"id": 7, "name": "Police Station", "description": "This police station is where residents go to for assistance, including with emergencies, safety concerns, etc.", "coords": [47.65, -122.11]},
+try:
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        data = json.load(f)
+except FileNotFoundError:
+    data = {"resources": []}  
+
+resource_categories = [
+    {"name": "Health & Wellness", "icon": "bars-3"},
+    {"name": "Education & Youth", "icon": "plus"},
+    {"name": "Social Services & Support", "icon": "check"},
+    {"name": "Arts, Culture, and Recreation", "icon": "clock"},
+    {"name": "Environmental & Sustainability", "icon": "chevron-down"},
+    {"name": "Community Events & Volunteering", "icon": "arrows-up-down"},
 ]
 
 @app.route('/')
@@ -45,12 +46,14 @@ def dashboard():
 
 @app.route('/directory/<string:category>', methods=['GET'])
 def directory(category):
-    return render_template('directory.html', category=category, categories=resource_categories, resources=resources)
+    category = unquote(category).replace('-', ' ').strip().title()  
+    filtered_resources = [r for r in data["resources"] if r["category"] == category]
+    return render_template('directory.html', category=category, categories=resource_categories, resources=filtered_resources)
 
 @app.route('/resource/<int:resource_id>', methods=['GET'])
 def resource_subpage(resource_id):
     resource = None
-    for r in resources:
+    for r in data["resources"]:
         if r['id'] == resource_id:
             resource = r
             break
