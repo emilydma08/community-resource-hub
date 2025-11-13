@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ resource.name }}</title>
+    <title>Survey</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='survey.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
@@ -37,12 +37,12 @@
         <div class = 'q'>
             <h3>Personal Interests</h3>
             <p>Select all that apply</p>
-            <label><input type="checkbox" name="event" value="STEM"> STEM</label><br>
-            <label><input type="checkbox" name="event" value="Art"> Art</label><br>
-            <label><input type="checkbox" name="event" value="Health"> Health</label><br>
-            <label><input type="checkbox" name="event" value="Community-service"> Community Service</label><br>
+            <label><input type="checkbox" name="interest" value="STEM"> STEM</label><br>
+            <label><input type="checkbox" name="interest" value="Art"> Art</label><br>
+            <label><input type="checkbox" name="interest" value="Health"> Health</label><br>
+            <label><input type="checkbox" name="interest" value="Community-service"> Community Service</label><br>
             <button type="button" class="back">Back</button>
-            <button type="submit">Submit</button>
+            <button type="submit" id = 'submit'>Submit</button>
         </div>
 
 
