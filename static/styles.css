@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root{
-    --red: #c2410e;
-    --light-red: #e76d59;
-    --blue: #37718b;
-    --beige: #fcf6ec;
+    --white: #fafafa;
+    --beige: #fcf5ee;
+    --black: #171616;
+    --green: #8bb289;
+    --blue: #376e7c;
     --nav-font: 'Montserrat', sans-serif;
     --body-font: 'Roboto', sans-serif;
     --heading-font: 'Merriweather', serif;
