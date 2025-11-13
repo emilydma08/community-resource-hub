@@ -26,7 +26,7 @@ resource_categories = [
 
 @app.route('/')
 def landing():
-    return render_template('register.html')
+    return render_template('index.html')
 
 @app.route('/login', methods=['GET'])
 def login():
