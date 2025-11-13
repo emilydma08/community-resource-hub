@@ -180,7 +180,7 @@ h1{
 
 .card {
   min-width: 250px;
-  background:var(--blue);
+  background:var(--green);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -188,7 +188,7 @@ h1{
   font-size: 1.1rem;
   font-family: var(--body-font);
   font-weight: 500;
-  color: var(--white);
+  color: var(--black);
 }
 
 @keyframes scroll {
@@ -222,7 +222,7 @@ h1{
 .about-text {
   flex: 0 0 auto;             
   max-width: 800px;           
-  background-color: var(--green);
+  background-color: var(--blue);
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -234,7 +234,7 @@ h1{
 .about-text h2 {
   font-size: 2rem;
   font-family: var(--heading-font);
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 20px;
 }
 
@@ -245,7 +245,7 @@ h1{
 
 .about-text li {
   font-size: 1.1rem;
-  color: var(--black);
+  color: var(--white);
   margin-bottom: 12px;
   padding-left: 1.7rem;
   position: relative;
@@ -255,7 +255,7 @@ h1{
   content: "⨠";
   position: absolute;
   left: 0;
-  color: var(--black);
+  color: var(--white);
   font-size: 1.5rem;
   line-height: 1;
 }
