@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-document.addEventListener("DOMContentLoaded", () => {
+
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const login = document.getElementById('login');
+  const auth = getAuth();
   login.addEventListener('click', function(event) {
     event.preventDefault();
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
-    const auth = getAuth();
     const email = emailInput.value;
   const password = passwordInput.value;
   signInWithEmailAndPassword(auth, email, password)
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-});
+  
 export function logout() {
   signOut(auth).then(() => {
     window.location.href = "{{ url_for('landing') }}";
