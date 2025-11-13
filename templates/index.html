@@ -8,9 +8,48 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-        {% include "_navbar.html" %}
+    <section class="hero">
+        <div class="overlay"></div>
+        <div class="content">
+            <h1>Redmond Resources</h1>
+            <p>Join our growing Redmond community hub to discover local resources, events, and volunteer opportunities tailored just for you.
+               <br><br>Sign up today to connect, share, and make a difference together.</p>
+            <div class="buttons">
+                <a href="#features" class="btn">Learn More</a>
+                <a href="{{ url_for('register') }}" class="btn">Login/Register</a>
+            </div>
+        </div>
+    </section>
 
-    <h1>Landing</h1>
+    <section id="features" class="features">
+    <div class="scroll-container">
+      <div class="scroll-content">
+        <div class="card">Community Programs</div>
+        <div class="card">Volunteer Opportunities</div>
+        <div class="card">Local Events</div>
+        <div class="card">Support Services</div>
+        <div class="card">Education & Youth</div>
+        <div class="card">Arts & Culture</div>
+        <div class="card">Environment & Sustainability</div>
+        <div class="card">Health & Wellness</div>
+      </div>
+    </div>
+  </section>
+    <section class="about">
+  <div class="about-container">
+    <div class="about-text">
+      <h2>Explore What Our Community Hub Offers</h2>
+      <ul>
+        <li>  Filter and search for community resources by category or distance</li>
+        <li>  Discover volunteer opportunities and local events</li>
+        <li>  Interactive map highlighting smaller organizations</li>
+        <li>  Personalized recommendations through your resident dashboard</li>
+        <li>  Organizations can post updates, events, and blogs</li>
+      </ul>
+    </div>
+    <img src="/static/images/dashboard.png" alt="Community Resources Overview">
+  </div>
+</section>
 
 </body>
 </html>

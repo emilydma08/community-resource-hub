@@ -90,3 +90,179 @@ h1{
 .body-font {
   font-family: var(--body-font);
 }
+
+/*Landing Page*/
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url(/static/images/redmond.jpg) center center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 30, 30, 0.75); 
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-family: var(--heading-font);
+}
+
+.content p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  font-family: var(--body-font);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid var(--white);
+  background-color: transparent;
+  color: #fff;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.features {
+  background-color: var(--beige);
+  padding: 30px 20px 60px; 
+  text-align: center;
+}
+
+.scroll-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.scroll-content {
+  display: flex;
+  gap: 20px;
+  animation: scroll 30s linear infinite;
+}
+
+.card {
+  min-width: 250px;
+  background:var(--blue);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  font-family: var(--body-font);
+  font-weight: 500;
+  color: var(--white);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.scroll-content::after {
+  content: '';
+  display: flex;
+}
+
+.about {
+  background-color: var(--white);
+  padding: 80px 50px;
+}
+
+.about-container {
+  display: flex;
+  align-items: stretch;      
+  justify-content: flex-start; 
+  width: 100%;
+  gap: 80px;                  
+  margin: 0 auto;             
+}
+
+.about-text {
+  flex: 0 0 auto;             
+  max-width: 800px;           
+  background-color: var(--green);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  font-family: var(--heading-font);
+  color: var(--black);
+  margin-bottom: 20px;
+}
+
+.about-text ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-text li {
+  font-size: 1.1rem;
+  color: var(--black);
+  margin-bottom: 12px;
+  padding-left: 1.7rem;
+  position: relative;
+}
+
+.about-text li::before {
+  content: "⨠";
+  position: absolute;
+  left: 0;
+  color: var(--black);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.about-container img {
+  max-height: 100%;          
+  width: auto;                
+  max-width: 800px;          
+  object-fit: contain;        
+}
