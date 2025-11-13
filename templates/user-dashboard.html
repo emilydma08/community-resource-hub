@@ -80,14 +80,31 @@
   <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
 </body>
 <script type = 'module'>
-    import {auth, onAuthstateChanged} from "{{ url_for('static', filename='auth.js') }}";
+     import { auth } from "{{ url_for('static', filename='auth.js') }}";
+     import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
     document.addEventListener("DOMContentLoaded", () => {
-       if(!user) {
+       onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        console.log("No user found — redirecting to register");
         window.location.href = "{{ url_for('register') }}";
-       }
-       else {
+      } else {
         console.log("Logged in as:", user.email);
-       }
+        document.querySelector('#header h2').textContent = `Hi ${user.name}!`;
+      }
     });
+    });
+    document.addEventListener("click", (e) => {
+    if (e.target.closest("a[href='{{ url_for('landing') }}']")) {
+      e.preventDefault();
+      signOut(auth)
+        .then(() => {
+          console.log("User signed out");
+          window.location.href = "{{ url_for('landing') }}";
+        })
+        .catch((error) => {
+          console.error("Logout error:", error);
+        });
+    }
+  });
 </script>
 </html>

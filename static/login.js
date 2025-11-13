@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 document.addEventListener("DOMContentLoaded", () => {
@@ -19,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
   const login = document.getElementById('login');
   login.addEventListener('click', function(event) {
     event.preventDefault();
@@ -56,3 +54,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+export function logout() {
+  signOut(auth).then(() => {
+    window.location.href = "{{ url_for('landing') }}";
+  }).catch((error) => {
+    console.error("Logout failed:", error);
+  });
+};
+export { auth };
