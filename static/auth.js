@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-import { createUserWithEmailAndPassword, getAuth } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+import { createUserWithEmailAndPassword, getAuth, updateProfile } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,20 +18,27 @@ import { createUserWithEmailAndPassword, getAuth } from "https://www.gstatic.com
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
   const submit = document.getElementById('submit');
+  const auth = getAuth();
+  document.addEventListener("DOMContentLoaded", () => {
   submit.addEventListener('click', function(event) {
     event.preventDefault();
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password');
-    const auth = getAuth();
+    const emailInput = document.getElementById('email1');
+    const passwordInput = document.getElementById('password1');
+    const nameInput = document.getElementById('name');
     const email = emailInput.value;
+    const name = nameInput.value;
   const password = passwordInput.value;
   createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
-    window.location.href = '/dashboard'
+    emailInput.value = '';
+    passwordInput.value = '';
+    updateProfile(user, {displayName: name}).then(()=>{
+    window.location.href = '/dashboard';
+    nameInput.value = '';
+    })
     // ...
   })
   .catch((error) => {
@@ -41,29 +47,41 @@ import { createUserWithEmailAndPassword, getAuth } from "https://www.gstatic.com
       alert('Email is taken');
       emailInput.value = '';
       passwordInput.value = '';
+      name.value = '';
     }
     else if (errorCode == 'auth/invalid-email') {
       alert('Not a valid email');
       emailInput.value = '';
       passwordInput.value = '';
+      name.value = '';
     }
     else if (errorCode == 'auth/weak-password') {
       alert('Password is too short');
       emailInput.value = '';
       passwordInput.value = '';
+      name.value = '';
     }
     else if (errorCode == 'auth/missing-email') {
       alert('Please enter a valid email');
       emailInput.value = '';
       passwordInput.value = '';
+      name.value = '';
     }
     else {
       alert('Something went wrong. Please try again later');
       emailInput.value = '';
       passwordInput.value = '';
+      name.value = '';
     }
-    const errorMessage = error.message;
-    // ..
   });
-
+  
   });
+  });
+export function logout() {
+  signOut(auth).then(() => {
+    window.location.href = "{{ url_for('landing') }}";
+  }).catch((error) => {
+    console.error("Logout failed:", error);
+  });
+};
+export { auth };
