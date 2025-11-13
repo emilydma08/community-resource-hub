@@ -48,7 +48,7 @@ def dashboard():
 def directory(category):
     category = unquote(category).replace('-', ' ').strip().title()  
     filtered_resources = [r for r in data["resources"] if r["category"] == category]
-    return render_template('directory.html', category=category, categories=resource_categories, resources=filtered_resources)
+    return render_template('directory.html', category=category, categories=resource_categories, resources=filtered_resources, num_resources=len(filtered_resources))
 
 @app.route('/resource/<int:resource_id>', methods=['GET'])
 def resource_subpage(resource_id):

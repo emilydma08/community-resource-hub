@@ -21,24 +21,49 @@
     </section>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto p-6 grid md:grid-cols-3 gap-6">
+    <main class="max-w-6xl mx-auto p-6 grid md:grid-cols-3 gap-6 body-font">
         <!-- Hours and Info -->
         <section class="md:col-span-2 bg-white p-5 rounded-xl shadow-sm border border-gray-200">
-        <h2 class="text-2xl font-semibold mb-3">Hours + Info</h2>
-        <p class="text-gray-700 mb-2">Mon–Fri: 9AM – 5PM</p>
-        <p class="text-gray-700 mb-2">Location: 123 Main Street</p>
-        <p class="text-gray-700 mb-2">Contact: (555) 555-5555</p>
-        <p class="text-gray-700 mt-4">{{ resource.description }}</p>
+        <h2 class="text-2xl font-semibold mb-3 flex">Hours + Info</h2>
+            <div class="flex flex-row align-start justify-between mb-2">
+                <div class="text-gray-700 mr-4">
+                {% for day, times in resource.hours.items() %}
+                <p>
+                    <span class="font-semibold">{{ day }}:</span>
+                    {% if times %}
+                    {{ times[0] }} – {{ times[1] }}
+                    {% else %}
+                    Closed
+                    {% endif %}
+                </p>
+                {% endfor %}
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex flex-row items-start gap-3 mb-3">
+                        <img src="{{ url_for('static', filename='images/location.png') }}" alt="Location Icon" class="w-6 h-6 flex-shrink-0">
+                        <p class="text-gray-700 mb-2">{{ resource.address }}</p>
+                    </div>
+                    <div class="flex flex-row items-start gap-2 mb-3">
+                        <img src="{{ url_for('static', filename='images/phone.png') }}" alt="Phone Icon" class="w-6 h-6 flex-shrink-0">
+                        <p class="text-gray-700 mb-2">{{ resource.phone }}</p>
+                    </div>
+                    <div class="flex flex-row items-start gap-3">
+                        <img src="{{ url_for('static', filename='images/website.png') }}" alt="website Icon" class="w-6 h-6 flex-shrink-0">
+                        <p class="text-gray-700 mb-2">{{ resource.website }}</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-gray-700 mt-4">{{ resource.description }}</p>
         </section>
 
         <!-- Buttons + Map -->
         <section class="space-y-4">
         <div class="flex justify-around bg-white p-3 rounded-xl shadow-sm border border-gray-200">
-            <button class="icon-btn">⬅️</button>
-            <button class="icon-btn">▶️</button>
-            <button class="icon-btn">➡️</button>
+            <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="Bookmark Icon" class="w-7 h-auto">
+            <img src="{{ url_for('static', filename='images/share-30.png') }}" alt="Share Icon" class="w-7 h-auto">
+            <img src="{{ url_for('static', filename='images/comment-48.png') }}" alt="Comment Icon" class="w-7 h-auto">
         </div>
-        <div style="height: 250px;" id="map"></div>
+        <div style="height: 250px; border-radius: 2rem;" id="map"></div>
         </section>
     </main>
 
