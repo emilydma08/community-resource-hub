@@ -21,13 +21,12 @@ import { createUserWithEmailAndPassword, getAuth, signOut, updateProfile } from 
   const auth = getAuth();
   document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM loaded");
-    const submit = document.getElementById('submit');
-    console.log("Submit button:", submit);
-    
+    const submit = document.getElementById('submit');    
     if (!submit) {
         console.log("Submit button is null!");
         return;
     }
+    console.log("Submit button:", submit);
     submit.addEventListener('click', function(event) {
     console.log("Button clicked!");
     event.preventDefault();
@@ -50,7 +49,7 @@ createUserWithEmailAndPassword(auth, email, password)
     } catch (err) {
       console.error("Failed to set display name:", err);
     }
-    window.location.href = '/dashboard';
+    window.location.href = '/survey';
   })
   .catch((error) => {
     const errorCode = error.code;
