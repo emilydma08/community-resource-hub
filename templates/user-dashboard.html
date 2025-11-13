@@ -6,12 +6,11 @@
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
 </head>
 <body>
     {% include "_navbar.html" %}
 
-    <div class="pt-16 px-14 max-w-screen overflow-x-hidden mx-auto">
+    <div id = 'header' class="pt-16 px-14 max-w-screen overflow-x-hidden mx-auto">
         <div class="flex flex-row items-center justify-between mt-8 pb-4">
             <h2 class="heading-font text-3xl">Hi User!</h2>
             <div class="flex flex-row items-center gap-2">
@@ -204,7 +203,7 @@
         window.location.href = "{{ url_for('register') }}";
       } else {
         console.log("Logged in as:", user.email);
-        document.querySelector('#header h2').textContent = `Hi ${user.name}!`;
+        document.querySelector('#header h2').textContent = `Hi ${user.displayName || 'User'}!`;
       }
     });
     });
