@@ -37,7 +37,7 @@
         "Sunday": ["08:00", "17:00"]
       },
       "address": "16255 NE 87th Street, Ste 150, Bldg. A-Forest, Redmond, WA 98052",
-      "phone": "(425) 882 1697",
+      "phone": "(425) 882-1697",
       "email": null,
       "website": "https://www.healthpointchc.org/find-clinics/redmond",
       "tags": ["health", "wellness", "community", "medical", "dental", "behavioral_health"]
@@ -48,11 +48,19 @@
       "category": "Health & Wellness",
       "description": "Provides comprehensive mental‑health services including therapy, psychiatry and telehealth for children, teens and adults.",
       "coords": [47.6770, -122.1262],
-      "hours": {},
-      "address": "",
-      "phone": "",
-      "email": "",
-      "website": "",
+      "hours": {
+        "Mon": ["09:00", "20:00"],
+        "Tue": ["09:00", "20:00"],
+        "Wed": ["09:00", "20:00"],
+        "Thu": ["09:00", "20:00"],
+        "Fri": ["09:00", "20:00"],
+        "Saturday": null,
+        "Sunday": null
+      },
+      "address": "8301 161st Ave NE, Ste 202, Redmond, WA 98052",
+      "phone": "(425) 588-0692",
+      "email": null,
+      "website": "https://lightheartassociates.com/lightheart-psychological-associates-locations/redmond-medical-center-wa/",
       "tags": ["health", "wellness", "mental_health", "therapy", "psychiatry", "telehealth"]
     },
     {
@@ -61,11 +69,19 @@
       "category": "Health & Wellness",
       "description": "A primary‑care practice affiliated with a hospital system, delivering family‑health services in the Redmond area.",
       "coords": [47.6740, -122.1210],
-      "hours": {},
-      "address": "",
-      "phone": "",
-      "email": "",
-      "website": "",
+      "hours": {
+        "Mon": ["07:00", "17:00"],
+        "Tue": ["07:00", "17:00"],
+        "Wed": ["07:00", "17:00"],
+        "Thu": ["07:00", "17:00"],
+        "Fri": ["07:00", "17:00"],
+        "Saturday": null,
+        "Sunday": null
+      },
+      "address": "17181 Redmond Way Suite 300 Redmond, WA 98052",
+      "phone": "(425) 635-6430",
+      "email": null,
+      "website": "https://www.overlakehospital.org/locations/overlake-clinics-primary-care-redmond",
       "tags": ["health", "wellness", "primary_care", "family_health"]
     },
     {
@@ -74,11 +90,19 @@
       "category": "Health & Wellness",
       "description": "A wellness‑center offering interdisciplinary care combining counseling, psychiatry and holistic wellness support.",
       "coords": [47.64, -122.13],
-      "hours": {},
-      "address": "",
-      "phone": "",
-      "email": "",
-      "website": "",
+      "hours": {
+        "Mon": ["08:00", "19:00"],
+        "Tue": ["08:00", "19:00"],
+        "Wed": ["08:00", "19:00"],
+        "Thu": ["08:00", "19:00"],
+        "Fri": ["08:00", "19:00"],
+        "Saturday": ["08:00", "17:00"],
+        "Sunday": ["08:00", "17:00"]
+      },
+      "address": "3925 159th Ave NE Redmond, WA 98052",
+      "phone": "(425) 216-0550",
+      "email": null,
+      "website": "https://www.mslwhc.com/",
       "tags": ["health", "wellness", "counseling", "psychiatry", "holistic"]
     },
     {
@@ -87,11 +111,19 @@
       "category": "Health & Wellness",
       "description": "A behavioral‑health provider offering counseling and case‑management services for youth and adults in King County including Redmond.",
       "coords": [47.68, -122.12],
-      "hours": {},
-      "address": "",
-      "phone": "",
-      "email": "",
-      "website": "",
+      "hours": {
+        "Mon": ["08:00", "17:00"],
+        "Tue": ["08:00", "17:00"],
+        "Wed": ["08:00", "17:00"],
+        "Thu": ["08:00", "17:00"],
+        "Fri": ["08:00", "17:00"],
+        "Saturday": null,
+        "Sunday": null
+      },
+      "address": "16255 NE 87th St suite 160 Redmond, WA 98052, USA",
+      "phone": "(206) 901-2000",
+      "email": null,
+      "website": "https://www.sound.health/",
       "tags": ["health", "wellness", "behavioral_health", "counseling", "case_management", "youth"]
     },
     {
