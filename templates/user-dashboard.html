@@ -84,13 +84,28 @@
                     </div>
                 </div>
             </div>
+        </div>
     </div>
+    <div class = 'flex flex-col m-16 bg-[var(--beige)] rounded-xl max-w-screen'>
+    <div class = 'flex  flex-col self-center m-16 rounded-xl p-20 bg-[var(--green)] w-[45%]'> 
+        <h2 class = 'text-center heading-font text-3xl text-white'> Submit a resource request</h2>
+        <form id ='rec'>
+            <div class = 'flex flex-col gap-4 m-5'>
+                <label for = 'name' class = 'text-center heading-font'>Resource Name</label>
+                <input id = 'name' class = 'border border-gray-500 rounded-x' required>
+                <label for = 'description' class = 'text-center heading-font'>Description of Resource</label>
+                <textarea id = 'description' class = 'border border-gray-500 rounded-xs'></textarea>
+                <button type = 'submit' id = 'submit' class = 'text-white bg-[var(--blue)] w-[45%] rounded-xl p-5 self-center'>Submit</button>
+            </div>
+        </form>
     </div>
+</div>
   <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
 </body>
 <script type = 'module'>
      import { auth } from "{{ url_for('static', filename='auth.js') }}";
      import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+     const form = document.getElementById('rec');
     document.addEventListener("DOMContentLoaded", () => {
        onAuthStateChanged(auth, (user) => {
       if (!user) {
@@ -114,6 +129,11 @@
           console.error("Logout error:", error);
         });
     }
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
+        alert('Thank you for requesting a resource');
+        this.reset();
+    });
   });
 </script>
 <script type="module" src="{{ url_for('static', filename='dashboard.js') }}"></script>
