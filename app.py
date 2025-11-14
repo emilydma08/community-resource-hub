@@ -19,7 +19,7 @@ resource_categories = [
     {"name": "Health & Wellness", "icon": "health.png"},
     {"name": "Education & Youth", "icon": "education.png"},
     {"name": "Social Services & Support", "icon": "support.png"},
-    {"name": "Arts, Culture, and Recreation", "icon": "relax.png"},
+    {"name": "Arts, Culture, & Recreation", "icon": "relax.png"},
     {"name": "Environmental & Sustainability", "icon": "environment.png"},
     {"name": "Community Events & Volunteering", "icon": "volunteer.png"},
 ]
@@ -42,8 +42,10 @@ def survey():
 
 @app.route('/dashboard', methods=['GET'])
 def dashboard():
-    return render_template('user-dashboard.html', categories=resource_categories)
-
+    return render_template('user-dashboard.html', categories=resource_categories); 
+@app.route('/data/resources', methods=['GET'])
+def resources():
+    return jsonify(data['resources'])
 @app.route('/directory/<string:category>', methods=['GET'])
 def directory(category):
     category = unquote(category).replace('-', ' ').strip().title()  
