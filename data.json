@@ -19,7 +19,8 @@
       "phone": "(833) 411-5469",
       "email": "info@kinwellhealth.com",
       "website": "https://kinwellhealth.com/clinics/redmond/",
-      "tags": ["health", "wellness", "primary_care", "behavioral_health", "fitness", "holistic"]
+      "tags": ["health", "wellness", "primary_care", "behavioral_health", "fitness", "holistic"],
+      "img": "kinwellhealth.jpg"
     },
     {
       "id": 2,
@@ -40,7 +41,8 @@
       "phone": "(425) 882-1697",
       "email": null,
       "website": "https://www.healthpointchc.org/find-clinics/redmond",
-      "tags": ["health", "wellness", "community", "medical", "dental", "behavioral_health"]
+      "tags": ["health", "wellness", "community", "medical", "dental", "behavioral_health"],
+      "img": "healthpoint.jpg"
     },
     {
       "id": 3,
@@ -61,7 +63,8 @@
       "phone": "(425) 588-0692",
       "email": null,
       "website": "https://lightheartassociates.com/lightheart-psychological-associates-locations/redmond-medical-center-wa/",
-      "tags": ["health", "wellness", "mental_health", "therapy", "psychiatry", "telehealth"]
+      "tags": ["health", "wellness", "mental_health", "therapy", "psychiatry", "telehealth"],
+      "img": "lightheart.jpg"
     },
     {
       "id": 4,
@@ -82,7 +85,8 @@
       "phone": "(425) 635-6430",
       "email": null,
       "website": "https://www.overlakehospital.org/locations/overlake-clinics-primary-care-redmond",
-      "tags": ["health", "wellness", "primary_care", "family_health"]
+      "tags": ["health", "wellness", "primary_care", "family_health"],
+      "img": "overlakeclinics.jpg"
     },
     {
       "id": 5,
@@ -103,7 +107,8 @@
       "phone": "(425) 216-0550",
       "email": null,
       "website": "https://www.mslwhc.com/",
-      "tags": ["health", "wellness", "counseling", "psychiatry", "holistic"]
+      "tags": ["health", "wellness", "counseling", "psychiatry", "holistic"],
+      "img": "livingwell.jpg"
     },
     {
       "id": 6,
@@ -124,7 +129,8 @@
       "phone": "(206) 901-2000",
       "email": null,
       "website": "https://www.sound.health/",
-      "tags": ["health", "wellness", "behavioral_health", "counseling", "case_management", "youth"]
+      "tags": ["health", "wellness", "behavioral_health", "counseling", "case_management", "youth"],
+      "img": "soundbehavioral.jpg"
     },
     {
       "id": 7,
@@ -137,7 +143,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["education", "youth", "tutoring", "college_prep", "test_prep", "k12"]
+      "tags": ["education", "youth", "tutoring", "college_prep", "test_prep", "k12"],
+      "img": ""
     },
     {
       "id": 8,
@@ -150,7 +157,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["education", "youth", "tutoring", "math", "science", "test_prep", "reading", "languages"]
+      "tags": ["education", "youth", "tutoring", "math", "science", "test_prep", "reading", "languages"],
+      "img": ""
     },
     {
       "id": 9,
@@ -163,7 +171,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["education", "youth", "STEM", "tutoring", "coding", "science", "after_school", "engineering"]
+      "tags": ["education", "youth", "STEM", "tutoring", "coding", "science", "after_school", "engineering"],
+      "img": ""
     },
     {
       "id": 10,
@@ -176,7 +185,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["education", "youth", "STEAM", "arts", "science", "programming", "families"]
+      "tags": ["education", "youth", "STEAM", "arts", "science", "programming", "families"],
+      "img": ""
     },
     {
       "id": 11,
@@ -189,7 +199,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["education", "youth", "intergenerational", "community", "senior_services"]
+      "tags": ["education", "youth", "intergenerational", "community", "senior_services"],
+      "img": ""
     },
     {
       "id": 12,
@@ -202,7 +213,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["education", "youth", "gardening", "mentoring", "community", "volunteer"]
+      "tags": ["education", "youth", "gardening", "mentoring", "community", "volunteer"],
+      "img": ""
     },
     {
       "id": 13,
@@ -215,7 +227,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["social_services", "support", "nonprofit", "food_assistance", "housing", "employment"]
+      "tags": ["social_services", "support", "nonprofit", "food_assistance", "housing", "employment"],
+      "img": ""
     },
     {
       "id": 14,
@@ -228,7 +241,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["social_services", "support", "community", "nonprofit", "resource_center"]
+      "tags": ["social_services", "support", "community", "nonprofit", "resource_center"],
+      "img": ""
     },
     {
       "id": 15,
@@ -241,7 +255,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["social_services", "support", "refugees", "assistance", "low_income", "community"]
+      "tags": ["social_services", "support", "refugees", "assistance", "low_income", "community"],
+      "img": ""
     },
     {
       "id": 16,
@@ -254,7 +269,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["social_services", "support", "early_intervention", "family_support", "parenting", "children"]
+      "tags": ["social_services", "support", "early_intervention", "family_support", "parenting", "children"],
+      "img": ""
     },
     {
       "id": 17,
@@ -267,7 +283,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["social_services", "support", "senior_living", "housing", "nonprofit", "care"]
+      "tags": ["social_services", "support", "senior_living", "housing", "nonprofit", "care"],
+      "img": ""
     },
     {
       "id": 18,
@@ -280,7 +297,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["social_services", "support", "seniors", "recreation", "volunteer", "wellness"]
+      "tags": ["social_services", "support", "seniors", "recreation", "volunteer", "wellness"],
+      "img": ""
     },
     {
       "id": 19,
@@ -293,7 +311,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["arts", "culture", "recreation", "park", "trails", "playgrounds", "concerts"]
+      "tags": ["arts", "culture", "recreation", "park", "trails", "playgrounds", "concerts"],
+      "img": ""
     },
     {
       "id": 20,
@@ -306,7 +325,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["arts", "culture", "recreation", "STEAM", "community", "arts_programming", "science"]
+      "tags": ["arts", "culture", "recreation", "STEAM", "community", "arts_programming", "science"],
+      "img": ""
     },
     {
       "id": 21,
@@ -319,7 +339,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["arts", "culture", "recreation", "history", "museum", "community", "nonprofit"]
+      "tags": ["arts", "culture", "recreation", "history", "museum", "community", "nonprofit"],
+      "img": ""
     },
     {
       "id": 22,
@@ -332,7 +353,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["arts", "culture", "recreation", "nonprofit", "art_space", "workshops", "community"]
+      "tags": ["arts", "culture", "recreation", "nonprofit", "art_space", "workshops", "community"],
+      "img": ""
     },
     {
       "id": 23,
@@ -345,7 +367,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["arts", "culture", "recreation", "city", "advisory", "public_art", "community"]
+      "tags": ["arts", "culture", "recreation", "city", "advisory", "public_art", "community"],
+      "img": ""
     },
     {
       "id": 24,
@@ -358,7 +381,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["arts", "culture", "recreation", "community", "events", "volunteer", "service"]
+      "tags": ["arts", "culture", "recreation", "community", "events", "volunteer", "service"],
+      "img": ""
     },
     {
       "id": 25,
@@ -371,7 +395,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["environment", "sustainability", "wildlife", "conservation", "volunteer", "education"]
+      "tags": ["environment", "sustainability", "wildlife", "conservation", "volunteer", "education"],
+      "img": ""
     },
     {
       "id": 26,
@@ -384,7 +409,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["environment", "sustainability", "gardening", "food_production", "community", "volunteer"]
+      "tags": ["environment", "sustainability", "gardening", "food_production", "community", "volunteer"],
+      "img": ""
     },
     {
       "id": 27,
@@ -397,7 +423,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["environment", "sustainability", "city", "advisory", "community"]
+      "tags": ["environment", "sustainability", "city", "advisory", "community"],
+      "img": ""
     },
     {
       "id": 28,
@@ -410,7 +437,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["environment", "sustainability", "gardening", "food_production", "community", "education"]
+      "tags": ["environment", "sustainability", "gardening", "food_production", "community", "education"],
+      "img": ""
     },
     {
       "id": 29,
@@ -423,7 +451,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["environment", "sustainability", "transportation", "nonprofit"]
+      "tags": ["environment", "sustainability", "transportation", "nonprofit"],
+      "img": ""
     },
     {
       "id": 30,
@@ -436,7 +465,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["environment", "sustainability", "community", "volunteer", "trees", "parks"]
+      "tags": ["environment", "sustainability", "community", "volunteer", "trees", "parks"],
+      "img": ""
     },
     {
       "id": 31,
@@ -449,7 +479,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["community", "volunteering", "food", "meal_program", "church"]
+      "tags": ["community", "volunteering", "food", "meal_program", "church"],
+      "img": ""
     },
     {
       "id": 32,
@@ -462,7 +493,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["community", "volunteering", "nonprofit", "emergency", "safety", "training"]
+      "tags": ["community", "volunteering", "nonprofit", "emergency", "safety", "training"],
+      "img": ""
     },
     {
       "id": 33,
@@ -475,7 +507,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["community", "volunteering", "youth", "family", "service", "events"]
+      "tags": ["community", "volunteering", "youth", "family", "service", "events"],
+      "img": ""
     },
     {
       "id": 34,
@@ -488,7 +521,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["community", "volunteering", "food", "free_meals"]
+      "tags": ["community", "volunteering", "food", "free_meals"],
+      "img": ""
     },
     {
       "id": 35,
@@ -501,7 +535,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["community", "volunteering", "food", "school_break", "food_boxes", "families"]
+      "tags": ["community", "volunteering", "food", "school_break", "food_boxes", "families"],
+      "img": ""
     },
     {
       "id": 36,
@@ -514,7 +549,8 @@
       "phone": "",
       "email": "",
       "website": "",
-      "tags": ["community", "volunteering", "nonprofit", "children", "schools", "assault_survivors"]
+      "tags": ["community", "volunteering", "nonprofit", "children", "schools", "assault_survivors"],
+      "img": ""
     }
   ]
 }
