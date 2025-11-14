@@ -21,7 +21,7 @@
         <div class="flex flex-row justify-between gap-6">
             <div class="w-1/2 pr-8 flex flex-col gap-6">
                 <p class="body-font font-sm font-light">Community Resources are important and this website does things and introduces reousrces and shows events and this description is filler for design but also basically just tells the user about the app and the layout that they are seeing on their screen</p>
-                <div class="bg-[var(--beige)] h-[79vh] p-6 rounded-xl flex flex-col gap-4">
+                <div class="bg-[var(--beige)] h-[84vh] p-6 rounded-xl flex flex-col gap-4">
                     <h2 class="heading-font text-xl font-semibold">Resources For You</h2>
                     <div id = "resources-container" class="flex flex-row overflow-x-auto gap-6">
                     </div>
@@ -48,36 +48,36 @@
                     </div>
                 </div> 
                 <div class='bg-[var(--white)] p-5 rounded-2xl w-full flex flex-col gap-2 mb-6'>
-                    <h3 class="heading-font text-lg font-normal">Free Meal Distribution - <span>Eastside Food Not Bombs</span></h3>
+                    <h3 class="heading-font text-lg font-normal">Open Kitchen Wednesday - <span>Open Kitchen Redmond</span></h3>
                     <div class="flex flex-row">
                         <div class="flex flex-row">
                             <img src="{{ url_for('static', filename='images/location.png') }}" alt="location icon" class="w-5 h-auto">
-                            <span class="body-font font-light text-sm ml-2">Redmond Transit Center</span>
+                            <span class="body-font font-light text-sm ml-2">Redmond United Methodist Church</span>
                         </div>
                         <div class="flex flex-row ml-6">
                             <img src="{{ url_for('static', filename='images/calendar.png') }}" alt="calendar icon" class="w-5 h-auto">
-                            <span class="body-font font-light text-sm ml-2">Every Tuesday, 5 PM - 7 PM</span>
+                            <span class="body-font font-light text-sm ml-2">Every Wednesday, 5 PM - 6 PM</span>
                         </div>
                     </div>
-                    <p class="body-font font-light text-sm">A volunteer group gathering and distributing free meals every Tuesday in Redmond (near the transit center) as part of a community‑solidarity and service effort</p>
+                    <p class="body-font font-light text-sm">Open Kitchen serves a free, warm meal, Dine In or To Go. A vegetarian option is always available. We welcome anyone who needs a meal, a warm cup of coffee, or just a friendly conversation.</p>
                     <div class="flex flex-row justify-around align-center">
                         <div class="bg-[var(--green)] w-[45%] py-2 body-font text-sm font-normal text-white flex align-center justify-center rounded-xl">Register</div>
                         <div class="bg-[var(--blue)] w-[45%] py-2 body-font text-sm font-normal text-white flex align-center justify-center rounded-xl">Learn More</div>
                     </div>
                 </div>
                 <div class='bg-[var(--white)] p-5 rounded-2xl w-full flex flex-col gap-2 mb-6'>
-                    <h3 class="heading-font text-lg font-normal">Free Meal Distribution - <span>Eastside Food Not Bombs</span></h3>
+                    <h3 class="heading-font text-lg font-normal">Free Food Truck - <span>Northwest Share</span></h3>
                     <div class="flex flex-row">
                         <div class="flex flex-row">
                             <img src="{{ url_for('static', filename='images/location.png') }}" alt="location icon" class="w-5 h-auto">
-                            <span class="body-font font-light text-sm ml-2">Redmond Transit Center</span>
+                            <span class="body-font font-light text-sm ml-2">Together Center</span>
                         </div>
                         <div class="flex flex-row ml-6">
                             <img src="{{ url_for('static', filename='images/calendar.png') }}" alt="calendar icon" class="w-5 h-auto">
-                            <span class="body-font font-light text-sm ml-2">Every Tuesday, 5 PM - 7 PM</span>
+                            <span class="body-font font-light text-sm ml-2">Every Thursday, 6:30 PM - 8 PM</span>
                         </div>
                     </div>
-                    <p class="body-font font-light text-sm">A volunteer group gathering and distributing free meals every Tuesday in Redmond (near the transit center) as part of a community‑solidarity and service effort</p>
+                    <p class="body-font font-light text-sm">Anyone in and near Seattle looking for free food near them, Northwest Share’s free food truck is the answer. They can plan to come to any of the locations our free food is parked as per the schedule shown above.</p>
                     <div class="flex flex-row justify-around align-center">
                         <div class="bg-[var(--green)] w-[45%] py-2 body-font text-sm font-normal text-white flex align-center justify-center rounded-xl">Register</div>
                         <div class="bg-[var(--blue)] w-[45%] py-2 body-font text-sm font-normal text-white flex align-center justify-center rounded-xl">Learn More</div>
@@ -86,20 +86,53 @@
             </div>
         </div>
     </div>
-    <div class = 'flex flex-col m-16 bg-[var(--beige)] rounded-xl max-w-screen'>
-    <div class = 'flex  flex-col self-center m-16 rounded-xl p-20 bg-[var(--green)] w-[45%]'> 
-        <h2 class = 'text-center heading-font text-3xl text-white'> Submit a resource request</h2>
-        <form id ='rec'>
-            <div class = 'flex flex-col gap-4 m-5'>
-                <label for = 'name' class = 'text-center heading-font'>Resource Name</label>
-                <input id = 'name' class = 'border border-gray-500 rounded-x' required>
-                <label for = 'description' class = 'text-center heading-font'>Description of Resource</label>
-                <textarea id = 'description' class = 'border border-gray-500 rounded-xs'></textarea>
-                <button type = 'button' id = 'sub' class = 'text-white bg-[var(--blue)] w-[45%] rounded-xl p-5 self-center'>Submit</button>
+
+    <div class="px-14 py-12 max-w-screen mx-auto">
+        <div class="bg-[var(--beige)] rounded-xl p-8 flex flex-row gap-8">
+            <div class="w-1/2 flex flex-col justify-center pr-8">
+                <h2 class="heading-font text-3xl font-semibold mb-4">Submit a Resource Request</h2>
+                <p class="body-font text-base font-light leading-relaxed">
+                    Know of a community resource that's missing from our directory? Help us build a more comprehensive database by recommending resources that could benefit others in your area. Your suggestions help strengthen our community network.
+                </p>
             </div>
-        </form>
+
+            <div class="w-1/2">
+                <div class="bg-[var(--white)] p-6 rounded-2xl">
+                    <form id="rec" class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-2">
+                            <label for="name" class="heading-font text-base font-normal">Resource Name</label>
+                            <input
+                                id="name"
+                                type="text"
+                                class="body-font border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[var(--green)] transition"
+                                placeholder="Enter resource name"
+                                required
+                            >
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label for="description" class="heading-font text-base font-normal">Description of Resource</label>
+                            <textarea
+                                id="description"
+                                rows="4"
+                                class="body-font border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:border-[var(--green)] transition resize-none"
+                                placeholder="Describe the resource and why it would be valuable to the community"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="sub"
+                            class="bg-[var(--blue)] text-white body-font text-base font-normal py-3 px-6 rounded-xl hover:opacity-90 transition mt-2"
+                        >
+                            Submit Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
   <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
 </body>
 <script type = 'module'>
