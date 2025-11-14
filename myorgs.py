@@ -1,69 +1,61 @@
-import psycopg2
+import firebase_admin
 from firebase_admin import credentials, firestore, initialize_app
 
-cred = credentials.Certificate("myorgs-firebase-config.json")
+cred = credentials.Certificate("myorgs-config.json")
 initialize_app(cred)
 db = firestore.client()
-# Database connection details
-DB_HOST = "localhost"
-DB_NAME = "postgres"
-DB_USER = "postgres"
-DB_PASS = "1324"
-
-def get_db_connection():
-    conn = psycopg2.connect(host=DB_HOST, database=DB_NAME, user=DB_USER, password=DB_PASS)
-    return conn
 
 def get():
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute('SELECT * FROM communityresourcehub.orgs;')
-    data = cur.fetchall()
-    cur.close()
-    conn.close()
+    conn = db.collection('orgs')
+    cur = conn.stream()
+    data = []
+    for doc in cur:
+        org_data = doc.to_dict()
+        org_data['id'] = doc.id
+        data.append(tuple(org_data.values()))
     return data
 
 def getByName(name):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    statement = """SELECT * FROM communityresourcehub.orgs where name = %s ;"""
-    cur.execute(statement, (name,))
-    data = cur.fetchall()
-    cur.close()
-    conn.close()
+    conn = db.collection('orgs')
+    query = conn.where('name', '==', name).limit(1)
+    data = []
+    docs = list(query.stream())
+    if docs:
+        org_data = docs[0].to_dict()
+        org_data['id'] = docs[0].id
+        data.append(org_data)
     return data
 
+
 def UpdateByName(name, description, address, email, phone):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    statement = """update communityresourcehub.orgs 
-                    set description = %s,
-                    address = %s,
-                    email = %s,
-                    phone = %s
-                    where name = %s ;"""
-    cur.execute(statement, (description, address, email, phone, name))
-    conn.commit()
-    cur.close()
-    conn.close()
+    conn = db.collection('orgs')
+    query = conn.where('name', '==', name).limit(1)
+    docs = list(query.stream())
+    if docs:
+        doc_ref = docs[0].reference
+        doc_ref.update({
+            'description': description,
+            'address': address,
+            'email': email,
+            'phone': phone
+        })
 
 def insert(name, description, address, email, phone):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    statement = """INSERT INTO communityresourcehub.orgs (name, description, address, email, phone) VALUES (%s, %s, %s, %s, %s);"""
-    cur.execute(statement, (name, description, address, email, phone))
-    conn.commit()
-    cur.close()
-    conn.close()
+    conn = db.collection('orgs')
+    conn.add({
+        'name': name,
+        'description': description,
+        'address': address,
+        'email': email,
+        'phone': phone
+    })
     print("Data inserted successfully.")
 
 def deleteByName(name):
     print("name" + str(name))
-    conn = get_db_connection()
-    cur = conn.cursor()
-    statement = """DELETE FROM communityresourcehub.orgs WHERE name = %s ;"""
-    cur.execute(statement, (name,))
-    conn.commit()
-    cur.close()
-    conn.close()
+    conn = db.collection('orgs')
+    query = conn.where('name', '==', name).limit(1)
+    docs = query.stream()
+    for doc in docs:
+        doc.reference.delete()
     print("deleted")
