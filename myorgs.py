@@ -1,5 +1,9 @@
 import psycopg2
+from firebase_admin import credentials, firestore, initialize_app
 
+cred = credentials.Certificate("myorgs-firebase-config.json")
+initialize_app(cred)
+db = firestore.client()
 # Database connection details
 DB_HOST = "localhost"
 DB_NAME = "postgres"
