@@ -17,38 +17,38 @@
             <div class="mb-6 flex flex-row justify-between items-center">
                 <div class="flex flex-row items-center gap-5">
                     <h2 class="heading-font font-normal text-xl" >{{ category }}</h2>
-                    <p class="body-font text-sm">{{ num_resources }} resources found</p>
+                    <p id="resourceCount" class="body-font text-sm">{{ num_resources }} resources found</p>
                 </div>
                 <div class="relative">
-                    <div id="filterButton" class="flex flex-row items-center border px-3 py-2 rounded-lg gap-2">
-                        <img src="{{ url_for('static', filename='images/filter.png') }}" alt="Filter Icon" class="h-5 align-middle cursor-pointer">
-                        <p class="body-font text-sm inline-block ml-2 cursor-pointer">Filter</p>
+                    <div id="filterButton" class="flex flex-row items-center border border-gray-300 px-4 py-2 rounded-lg gap-2 cursor-pointer hover:bg-gray-50 transition-colors">
+                        <img src="{{ url_for('static', filename='images/filter.png') }}" alt="Filter Icon" class="h-5 align-middle">
+                        <p class="body-font text-sm">Filter</p>
                     </div>
 
-                    <div id="filterDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white border border-gray-300 rounded-xl shadow-lg z-50">
-                        <div class="p-4">
-                            <h3 class="text-base font-semibold mb-3">Filter Options</h3>
+                    <div id="filterDropdown" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
+                        <div class="p-5">
+                            <h3 class="heading-font text-lg font-normal mb-4">Filter Options</h3>
 
                             <!-- Open Now -->
-                            <label class="flex items-center gap-2 mb-3">
-                            <input type="checkbox" id="openNowFilter" class="form-checkbox">
-                            <span>Open Now</span>
+                            <label class="flex items-center gap-3 mb-4 cursor-pointer group">
+                                <input type="checkbox" id="openNowFilter" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer">
+                                <span class="body-font text-sm group-hover:text-gray-700">Open Now</span>
                             </label>
 
                             <!-- Tags -->
-                            <div class="mb-4">
-                            <p class="text-sm font-medium mb-2">Tags</p>
-                            <div id="tagFilters" class="flex flex-col gap-1">
-                            </div>
+                            <div class="mb-5">
+                                <p class="body-font text-sm font-medium mb-3 text-gray-700">Tags</p>
+                                <div id="tagFilters" class="flex flex-col gap-2 max-h-48 overflow-y-auto">
+                                </div>
                             </div>
 
-                            <div class="flex justify-end gap-2">
-                            <button id="closeFilter" class="text-gray-600 px-3 py-1 rounded hover:bg-gray-100">Close</button>
-                            <button id="applyFilter" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Apply</button>
+                            <div class="flex justify-end gap-3 pt-3 border-t border-gray-200">
+                                <button id="closeFilter" class="body-font text-sm text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">Close</button>
+                                <button id="applyFilter" class="body-font text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Apply</button>
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
 
             </div>
                             
@@ -83,20 +83,10 @@
 
   <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <!-- Map and Resource Card Interaction Script -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
-        const mapElement = document.getElementById("map");
-        const resourceCards = document.querySelectorAll(".resource-card");
-        const resourceData = Array.from(resourceCards).map(card => ({
-            id: card.dataset.id,
-            name: card.querySelector("h3").textContent,
-            coords: JSON.parse(card.dataset.coords || "[]"),
-            cardElement: card
-        }));
-
+        // Map & Resource Setup
         const map = L.map('map').setView([47.673988, -122.121513], 12);
-
         L.tileLayer('https://api.maptiler.com/maps/basic/{z}/{x}/{y}.png?key=LNbdm4h4Z8EJFZpmNIQS', {
             attribution: '&copy; MapTiler &copy; OpenStreetMap',
             tileSize: 512,
@@ -105,29 +95,63 @@
             maxZoom: 18
         }).addTo(map);
 
+        const resourceCards = Array.from(document.querySelectorAll(".resource-card"));
+        const resourceData = resourceCards.map(card => {
+            const coords = JSON.parse(card.dataset.coords || "[]");
+            const hours = JSON.parse(card.dataset.hours || "{}");
+            const tags = Array.from(card.querySelectorAll(".bg-gray-200")).map(t => t.textContent.trim());
+            const marker = L.marker(coords).addTo(map).bindPopup(`<b>${card.querySelector("h3").textContent}</b>`);
+            return { card, coords, hours, tags, marker };
+        });
+
         let activeCard = null;
 
-        const markers = resourceData.map(resource => {
-            const marker = L.marker(resource.coords).addTo(map).bindPopup(`<b>${resource.name}</b>`);
-            marker.resourceId = resource.id;
+        function scrollIfNeed(card){
+            const rect = card.getBoundingClientRect();
+            const containerRect = card.parentElement.getBoundingClientRect();
+            if (rect.top < containerRect.top || rect.bottom > containerRect.bottom) {
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+        }
+
+        // Card Hover upon Click JS
+        resourceData.forEach((r, i) => {
+            const card = r.card;
+            const marker = r.marker;
 
             marker.on("click", () => {
                 if (activeCard) activeCard.classList.remove("bg-blue-100", "border-blue-500");
-
-                resource.cardElement.classList.add("bg-blue-100", "border-blue-500");
-                activeCard = resource.cardElement;
-
-                resource.cardElement.scrollIntoView({ behavior: "smooth", block: "center" });
+                card.classList.add("bg-blue-100", "border-blue-500");
+                activeCard = card;
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
             });
 
             marker.on("popupclose", () => {
-                if (activeCard === resource.cardElement) {
-                    activeCard.classList.remove("bg-blue-100", "border-blue-500");
+                if (activeCard === card) {
+                    card.classList.remove("bg-blue-100", "border-blue-500");
                     activeCard = null;
                 }
             });
 
-            return marker;
+            card.addEventListener("mouseover", () => {
+                marker.openPopup();
+                if (activeCard) activeCard.classList.remove("bg-blue-100", "border-blue-500");
+                card.classList.add("bg-blue-100", "border-blue-500");
+                activeCard = card;
+                scrollIfNeed(card);
+            });
+
+            card.addEventListener("mouseout", () => {
+                marker.closePopup();
+                if (activeCard === card) {
+                    card.classList.remove("bg-blue-100", "border-blue-500");
+                    activeCard = null;
+                }
+            });
+
+            card.addEventListener("click", () => {
+                window.location.href = card.dataset.url;
+            });
         });
 
         map.on("click", () => {
@@ -137,127 +161,7 @@
             }
         });
 
-        function scrollIfNeed(card){
-            const rect = card.getBoundingClientRect();
-            const containerRect = card.parentElement.getBoundingClientRect();
-
-            if (rect.top < containerRect.top || rect.bottom > containerRect.bottom) {
-                card.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
-        }
-
-        resourceCards.forEach((card, index) => {
-            card.addEventListener("mouseover", () => {
-                const marker = markers[index];
-                marker.openPopup();
-
-                if (activeCard){
-                    activeCard.classList.remove("bg-blue-100", "border-blue-500");
-                } 
-
-                const resource = resourceData[index];
-                resource.cardElement.classList.add("bg-blue-100", "border-blue-500");
-                activeCard = resource.cardElement;
-                scrollIfNeeded(resource.cardElement);
-            });
-            card.addEventListener("mouseout", () => {
-                const marker = markers[index];
-                marker.closePopup();
-
-                if (activeCard === card) {
-                    activeCard.classList.remove("bg-blue-100", "border-blue-500");
-                    activeCard = null;
-                }
-            });
-            card.addEventListener("click", () => {
-                window.location.href = card.dataset.url;
-            });
-        });
-    });
-  </script>
-
-  <!--Filter Button Script-->
-  <script>
-    const filterButton = document.getElementById('filterButton');
-    const filterDropdown = document.getElementById('filterDropdown');
-    const closeFilter = document.getElementById('closeFilter');
-    const applyFilter = document.getElementById('applyFilter');
-
-    filterButton.addEventListener('click', (e) => {
-        e.stopPropagation();
-        filterDropdown.classList.toggle('hidden');
-    });
-
-    document.addEventListener('click', (e) => {
-    if (!filterDropdown.classList.contains('hidden') && !filterDropdown.contains(e.target) && !filterButton.contains(e.target)) {
-        filterDropdown.classList.add('hidden');
-    }
-    });
-
-    closeFilter.addEventListener('click', () => {
-        filterDropdown.classList.add('hidden');
-    });
-
-    applyFilter.addEventListener('click', () => {
-        console.log('Filters applied');
-        filterDropdown.classList.add('hidden');
-    });
-  </script>
-
-  <!-- Open Now Status Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        function isOpenNow(hours) {
-            const now = new Date();
-            const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Saturday", "Sunday"];
-            const day = days[now.getDay()];
-            const schedule = hours[day];
-            if (!schedule || schedule.length < 2) return false;
-
-            const [open, close] = schedule.map(t => {
-                const [h, m] = t.split(":").map(Number);
-                return h * 60 + m;
-            });
-
-            const currentMinutes = now.getHours() * 60 + now.getMinutes();
-            return currentMinutes >= open && currentMinutes < close;
-        }
-
-        document.querySelectorAll(".resource-card").forEach(card => {
-            const hours = JSON.parse(card.dataset.hours || "{}");
-            const status = card.querySelector(".open-status");
-            if (isOpenNow(hours)) {
-                status.textContent = "Open Now";
-                status.classList.add("text-green-600");
-            } else {
-                status.textContent = "Closed";
-                status.classList.add("text-red-600");
-            }
-        });
-    });
-  </script>
-    <!-- Filter Logic Script -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".resource-card");
-        const tagContainer = document.getElementById("tagFilters");
-
-        const allTags = new Set();
-        cards.forEach(card => {
-            const tags = Array.from(card.querySelectorAll(".bg-gray-200")).map(t => t.textContent.trim());
-            tags.forEach(t => allTags.add(t));
-        });
-
-        allTags.forEach(tag => {
-            const label = document.createElement("label");
-            label.className = "flex items-center gap-2";
-            label.innerHTML = `<input type="checkbox" class="tag-checkbox form-checkbox" value="${tag}"> <span>${tag}</span>`;
-            tagContainer.appendChild(label);
-        });
-
-        const applyFilter = document.getElementById("applyFilter");
-        const openNowCheckbox = document.getElementById("openNowFilter");
-
+        // Open Now JS
         function isOpenNow(hours) {
             const now = new Date();
             const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Saturday"];
@@ -265,35 +169,70 @@
             const schedule = hours[day];
             if (!schedule || schedule.length < 2) return false;
             const [open, close] = schedule.map(t => {
-            const [h, m] = t.split(":").map(Number);
-            return h * 60 + m;
+                const [h, m] = t.split(":").map(Number);
+                return h * 60 + m;
             });
             const currentMinutes = now.getHours() * 60 + now.getMinutes();
             return currentMinutes >= open && currentMinutes < close;
         }
 
+        resourceData.forEach(r => {
+            const status = r.card.querySelector(".open-status");
+            if (isOpenNow(r.hours)) {
+                status.textContent = "Open Now";
+                status.classList.add("text-green-600");
+            } else {
+                status.textContent = "Closed";
+                status.classList.add("text-red-600");
+            }
+        });
+
+        // Filtering JS
+        const filterButton = document.getElementById('filterButton');
+        const filterDropdown = document.getElementById('filterDropdown');
+        const closeFilter = document.getElementById('closeFilter');
+        const applyFilter = document.getElementById('applyFilter');
+        const openNowCheckbox = document.getElementById('openNowFilter');
+        const tagContainer = document.getElementById("tagFilters");
+        const resourceCountElement = document.getElementById("resourceCount");
+
+        filterButton.addEventListener('click', e => { e.stopPropagation(); filterDropdown.classList.toggle('hidden'); });
+        closeFilter.addEventListener('click', () => filterDropdown.classList.add('hidden'));
+        document.addEventListener('click', e => {
+            if (!filterDropdown.classList.contains('hidden') && !filterDropdown.contains(e.target) && !filterButton.contains(e.target))
+                filterDropdown.classList.add('hidden');
+        });
+
+        const allTags = new Set();
+        resourceData.forEach(r => r.tags.forEach(tag => allTags.add(tag)));
+        allTags.forEach(tag => {
+            const label = document.createElement("label");
+            label.className = "flex items-center gap-2 cursor-pointer";
+            label.innerHTML = `<input type="checkbox" class="tag-checkbox form-checkbox" value="${tag}"> <span>${tag}</span>`;
+            tagContainer.appendChild(label);
+        });
+
         applyFilter.addEventListener("click", () => {
             const selectedTags = Array.from(document.querySelectorAll(".tag-checkbox:checked")).map(cb => cb.value);
             const filterOpenNow = openNowCheckbox.checked;
+            let visibleCount = 0;
 
-            cards.forEach(card => {
-                const cardTags = Array.from(card.querySelectorAll(".bg-gray-200")).map(t => t.textContent.trim());
-                const hours = JSON.parse(card.dataset.hours || "{}");
-                const open = isOpenNow(hours);
-
+            resourceData.forEach(r => {
                 let show = true;
+                if (filterOpenNow && !isOpenNow(r.hours)) show = false;
+                if (selectedTags.length && !selectedTags.some(tag => r.tags.includes(tag))) show = false;
 
-                if (filterOpenNow && !open){
-                    show = false;
+                r.card.style.display = show ? "flex" : "none";
+                if (show) {
+                    r.marker.addTo(map);
+                    visibleCount++;
+                } else {
+                    r.marker.remove();
                 }
-                if (selectedTags.length && !selectedTags.some(tag => cardTags.includes(tag))){
-                    show = false;
-                }
-
-                card.style.display = show ? "flex" : "none";
             });
 
-            document.getElementById("filterDropdown").classList.add("hidden");
+            resourceCountElement.textContent = `${visibleCount} resource${visibleCount !== 1 ? 's' : ''} found`;
+            filterDropdown.classList.add("hidden");
         });
     });
   </script>
