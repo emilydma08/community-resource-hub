@@ -77,7 +77,7 @@ def edit_organization(org_name):
         return render_template('my-orgs.html', orgs=orgs)
     
     org = myorgs.getByName(org_name)
-    return render_template('edit-organization.html', org=org[0])
+    return render_template('edit-organization.html', org=org)
 
 
 @app.route('/my-organizations', methods=['GET'])
