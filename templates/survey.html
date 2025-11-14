@@ -8,45 +8,130 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='survey.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body>
-    <h1>Survey</h1>
-    <form id = 'survey-form'>
-        <div class = 'q active'>
-            <h3>Favorite Categories of Resources</h3>
-            <p>Select all that apply</p>
-            <label><input type="checkbox" name="categories" value="Education"> Education</label><br>
-            <label><input type="checkbox" name="categories" value="Art"> Art</label><br>
-            <label><input type="checkbox" name="categories" value="Health"> Health</label><br>
-            <label><input type="checkbox" name="categories" value="Safety"> Safety</label><br>
-            <label><input type="checkbox" name="categories" value="Parks"> Parks</label><br>
-            <label><input type="checkbox" name="categories" value="Volunteering"> Volunteering</label><br>
-            <button type="button" class="next">Next</button>
+<body class="bg-gray-50">
+    <div class="min-h-screen flex items-center justify-center px-4 py-8">
+        <div class="max-w-md w-full">
+            <div class="text-center mb-8">
+                <h1 class="heading-font text-4xl font-bold text-gray-900 mb-2">Personalize Your Experience</h1>
+                <p class="body-font text-gray-600">Help us recommend the best resources for you</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <form id="survey-form">
+                    <div class="q active">
+                        <div class="mb-6">
+                            <h3 class="heading-font text-2xl font-bold text-gray-900 mb-2">Favorite Categories of Resources</h3>
+                            <p class="body-font text-sm text-gray-600 mb-6">Select all that apply</p>
+                            <div class="space-y-3">
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="categories" value="Education" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Education</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="categories" value="Art" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Art</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="categories" value="Health" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Health</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="categories" value="Safety" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Safety</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="categories" value="Parks" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Parks</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="categories" value="Volunteering" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Volunteering</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex justify-end mt-6">
+                            <button type="button" class="next w-full bg-[var(--blue)] text-white py-3 rounded-lg body-font font-medium hover:opacity-90 transition-opacity">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="q">
+                        <div class="mb-6">
+                            <h3 class="heading-font text-2xl font-bold text-gray-900 mb-2">Resource Type Preferences</h3>
+                            <p class="body-font text-sm text-gray-600 mb-6">Select all that apply</p>
+                            <div class="space-y-3">
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="event" value="Workshops" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Workshops</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="event" value="Articles" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Articles</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="event" value="Community-wide Events" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Community-wide Events</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="event" value="Volunteering" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Volunteering</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 mt-6">
+                            <button type="button" class="back w-full bg-gray-200 text-gray-700 py-3 rounded-lg body-font font-medium hover:bg-gray-300 transition-colors">
+                                Back
+                            </button>
+                            <button type="button" class="next w-full bg-[var(--blue)] text-white py-3 rounded-lg body-font font-medium hover:opacity-90 transition-opacity">
+                                Next
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="q">
+                        <div class="mb-6">
+                            <h3 class="heading-font text-2xl font-bold text-gray-900 mb-2">Personal Interests</h3>
+                            <p class="body-font text-sm text-gray-600 mb-6">Select all that apply</p>
+                            <div class="space-y-3">
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="interest" value="STEM" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">STEM</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="interest" value="Art" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Art</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="interest" value="Health" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Health</span>
+                                </label>
+                                <label class="flex items-center p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                                    <input type="checkbox" name="interest" value="Community-service" class="mr-3 w-4 h-4 text-blue-600 focus:ring-2 focus:ring-blue-500">
+                                    <span class="body-font text-gray-700">Community Service</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 mt-6">
+                            <button type="button" class="back w-full bg-gray-200 text-gray-700 py-3 rounded-lg body-font font-medium hover:bg-gray-300 transition-colors">
+                                Back
+                            </button>
+                            <button type="submit" id="submit" class="w-full bg-[var(--green)] text-white py-3 rounded-lg body-font font-medium hover:opacity-90 transition-opacity">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="mt-6 text-center">
+                <a href="{{ url_for('landing') }}" class="body-font text-sm text-gray-600 hover:text-gray-900">
+                    ← Skip for now
+                </a>
+            </div>
         </div>
+    </div>
 
-        <div class = 'q'>
-            <h3>Resource type Preferences</h3>
-            <p>Select all that apply</p>
-            <label><input type="checkbox" name="event" value="Workshops"> Workshops</label><br>
-            <label><input type="checkbox" name="event" value="Articles"> Articles</label><br>
-            <label><input type="checkbox" name="event" value="Community-wide Events"> Community-wide Events</label><br>
-            <label><input type="checkbox" name="event" value="Volunteering"> Volunteering</label><br>
-            <button type="button" class="back">Back</button>
-            <button type="button" class="next">Next</button>
-        </div>
-
-        <div class = 'q'>
-            <h3>Personal Interests</h3>
-            <p>Select all that apply</p>
-            <label><input type="checkbox" name="interest" value="STEM"> STEM</label><br>
-            <label><input type="checkbox" name="interest" value="Art"> Art</label><br>
-            <label><input type="checkbox" name="interest" value="Health"> Health</label><br>
-            <label><input type="checkbox" name="interest" value="Community-service"> Community Service</label><br>
-            <button type="button" class="back">Back</button>
-            <button type="submit" id = 'submit'>Submit</button>
-        </div>
-
-
-    </form>
+    <script type="module" src="{{ url_for('static', filename='survey.js') }}"></script>
 </body>
- <script type="module" src="{{ url_for('static', filename='survey.js') }}"></script>
 </html>
