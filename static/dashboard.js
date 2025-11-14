@@ -54,8 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('resources-container');
     container.innerHTML = '';
     filtered_tags.sort(() => Math.random() - 0.5).slice(0, 5).forEach(resource => {
-        const card = `
-            <div class="flex flex-none flex-col h-[65vh] bg-white rounded-2xl w-[45%] rounded-lg">
+        const card = document.createElement('div');
+        card.className = "flex flex-none flex-col h-[65vh] bg-white rounded-2xl w-[45%] rounded-lg cursor-pointer hover:shadow-lg transition";
+        card.dataset.url = `/resource/${resource.id}`; 
+        card.innerHTML =  `
         <img src="/static/images/perrigo.jpg" class="object-cover rounded-t-2xl w-full h-[60%] mb-3">
         <div class="flex flex-col px-4">
             <div class="flex flex-row items-center gap-4 mb-2">
@@ -72,11 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 `).join('')}
             </div>
         </div>
-    </div>
         `;
-        container.innerHTML+=card;
+    card.addEventListener('click', function(){
+        window.location.href = card.dataset.url;
     });
-    
+    container.appendChild(card);
+
+    });
     
    });
     });
