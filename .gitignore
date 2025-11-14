@@ -37,7 +37,7 @@ instance/
 # Sensitive files
 config.py
 .env
-
+myorgs-firebase-config.json
 # Coverage reports
 htmlcov/
 .coverage
