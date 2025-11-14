@@ -23,7 +23,7 @@
       <a href="{{ url_for('directory', category=item.name|lower|replace(' ', '-') ) }}"
          class="flex flex-col items-center justify-center border rounded-2xl p-6 hover:bg-gray-50 transition cursor-pointer w-[28vw] h-[16vw]">
         
-         <img src="{{ url_for('static', filename='images/park.png') }}" alt="Park Icon" class="w-24 h-24 mb-3">
+        <img src="{{ url_for('static', filename='images/%s' % item.icon) }}" alt="Category Icon" class="w-22 h-22 mb-8">
         <span class="nav-font font-light uppercase text-base text-black">{{ item.name }}</span>
       </a>
       {% endfor %}

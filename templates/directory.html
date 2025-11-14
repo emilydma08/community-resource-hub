@@ -29,15 +29,17 @@
                         <div class="p-4">
                             <h3 class="text-base font-semibold mb-3">Filter Options</h3>
 
-                            <div class="flex flex-col gap-2 mb-4">
-                            <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox">
-                                <span>Option 1</span>
+                            <!-- Open Now -->
+                            <label class="flex items-center gap-2 mb-3">
+                            <input type="checkbox" id="openNowFilter" class="form-checkbox">
+                            <span>Open Now</span>
                             </label>
-                            <label class="flex items-center gap-2">
-                                <input type="checkbox" class="form-checkbox">
-                                <span>Option 2</span>
-                            </label>
+
+                            <!-- Tags -->
+                            <div class="mb-4">
+                            <p class="text-sm font-medium mb-2">Tags</p>
+                            <div id="tagFilters" class="flex flex-col gap-1">
+                            </div>
                             </div>
 
                             <div class="flex justify-end gap-2">
@@ -231,6 +233,67 @@
                 status.textContent = "Closed";
                 status.classList.add("text-red-600");
             }
+        });
+    });
+  </script>
+    <!-- Filter Logic Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".resource-card");
+        const tagContainer = document.getElementById("tagFilters");
+
+        const allTags = new Set();
+        cards.forEach(card => {
+            const tags = Array.from(card.querySelectorAll(".bg-gray-200")).map(t => t.textContent.trim());
+            tags.forEach(t => allTags.add(t));
+        });
+
+        allTags.forEach(tag => {
+            const label = document.createElement("label");
+            label.className = "flex items-center gap-2";
+            label.innerHTML = `<input type="checkbox" class="tag-checkbox form-checkbox" value="${tag}"> <span>${tag}</span>`;
+            tagContainer.appendChild(label);
+        });
+
+        const applyFilter = document.getElementById("applyFilter");
+        const openNowCheckbox = document.getElementById("openNowFilter");
+
+        function isOpenNow(hours) {
+            const now = new Date();
+            const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Saturday"];
+            const day = days[now.getDay()];
+            const schedule = hours[day];
+            if (!schedule || schedule.length < 2) return false;
+            const [open, close] = schedule.map(t => {
+            const [h, m] = t.split(":").map(Number);
+            return h * 60 + m;
+            });
+            const currentMinutes = now.getHours() * 60 + now.getMinutes();
+            return currentMinutes >= open && currentMinutes < close;
+        }
+
+        applyFilter.addEventListener("click", () => {
+            const selectedTags = Array.from(document.querySelectorAll(".tag-checkbox:checked")).map(cb => cb.value);
+            const filterOpenNow = openNowCheckbox.checked;
+
+            cards.forEach(card => {
+                const cardTags = Array.from(card.querySelectorAll(".bg-gray-200")).map(t => t.textContent.trim());
+                const hours = JSON.parse(card.dataset.hours || "{}");
+                const open = isOpenNow(hours);
+
+                let show = true;
+
+                if (filterOpenNow && !open){
+                    show = false;
+                }
+                if (selectedTags.length && !selectedTags.some(tag => cardTags.includes(tag))){
+                    show = false;
+                }
+
+                card.style.display = show ? "flex" : "none";
+            });
+
+            document.getElementById("filterDropdown").classList.add("hidden");
         });
     });
   </script>

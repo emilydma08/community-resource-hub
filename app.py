@@ -16,12 +16,12 @@ except FileNotFoundError:
     data = {"resources": []}  
 
 resource_categories = [
-    {"name": "Health & Wellness", "icon": "bars-3"},
-    {"name": "Education & Youth", "icon": "plus"},
-    {"name": "Social Services & Support", "icon": "check"},
-    {"name": "Arts, Culture, and Recreation", "icon": "clock"},
-    {"name": "Environmental & Sustainability", "icon": "chevron-down"},
-    {"name": "Community Events & Volunteering", "icon": "arrows-up-down"},
+    {"name": "Health & Wellness", "icon": "health.png"},
+    {"name": "Education & Youth", "icon": "education.png"},
+    {"name": "Social Services & Support", "icon": "support.png"},
+    {"name": "Arts, Culture, and Recreation", "icon": "relax.png"},
+    {"name": "Environmental & Sustainability", "icon": "environment.png"},
+    {"name": "Community Events & Volunteering", "icon": "volunteer.png"},
 ]
 
 @app.route('/')
