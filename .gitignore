@@ -87,3 +87,4 @@ config.py
 htmlcov/
 .coverage
 .coverage.*
+myorgs-config.json
