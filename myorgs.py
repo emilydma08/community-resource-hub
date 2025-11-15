@@ -12,7 +12,7 @@ def get():
     for doc in cur:
         org_data = doc.to_dict()
         org_data['id'] = doc.id
-        data.append(tuple(org_data.values()))
+        data.append(org_data)
     return data
 
 def getByName(name):

@@ -65,10 +65,10 @@ def edit_organization(org_name):
     print(org_name)
 
     if request.method == 'POST':
-        org_description = request.form['org_description']
-        org_address = request.form['org_address']
-        org_email = request.form['org_email']
-        org_phone = request.form['org_phone']
+        org_description = request.form['orgDescription']
+        org_address = request.form['orgAddress']
+        org_email = request.form['orgEmail']
+        org_phone = request.form['orgPhone']
 
         myorgs.UpdateByName(org_name, org_description, org_address, org_email, org_phone)
         
