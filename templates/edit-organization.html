@@ -42,6 +42,7 @@
             <h2>Edit an Organization</h2>
             <div style="background-color: rgb(222, 229, 243);">
                 <form name="organizationRegistrationForm" action="{{ url_for('edit_form') }}" method="POST">
+                     <input type="hidden" name="oldOrgName" value="{{ org[0]['name'] }}">
                     <label for="orgName">Organization name:</label>
                     <input type="text" id="orgName" name="orgName" value="{{ org[0]['name'] }}"/><br    /><br>
                     <label for="orgDescription">Description:</label><br>

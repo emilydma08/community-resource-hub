@@ -105,12 +105,13 @@ def submit_form():
 @app.route('/edit_form', methods=['POST'])
 def edit_form():
     if request.method == 'POST':
-        name = request.form.get('orgName')
+        old_name = request.form.get('oldOrgName')
+        new_name = request.form.get('orgName')
         description = request.form.get('orgDescription')
         address = request.form.get('orgAddress')
         email = request.form.get('orgEmail')
         phone = request.form.get('orgPhone')
-        myorgs.UpdateByName(name, description, address, email, phone)
+        myorgs.UpdateByName(old_name, new_name, description, address, email, phone)
     
         return redirect(url_for('my_orgs'))
 
