@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.className = "flex flex-none flex-col h-[70vh] bg-white rounded-2xl w-[45%] rounded-lg cursor-pointer hover:shadow-lg transition";
         card.dataset.url = `/resource/${resource.id}`; 
         card.innerHTML =  `
-        <img src="/static/images/perrigo.jpg" class="object-cover rounded-t-2xl w-full h-[55%] mb-3">
+        <img src="static/images/${resource.img}" class="object-cover rounded-t-2xl w-full h-[55%] mb-3">
         <div class="flex flex-col px-4">
             <div class="flex flex-row items-center gap-4 mb-2">
                 <h2 class="heading-font font-base">${resource.name}</h2>

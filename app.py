@@ -65,10 +65,10 @@ def edit_organization(org_name):
     print(org_name)
 
     if request.method == 'POST':
-        org_description = request.form['org_description']
-        org_address = request.form['org_address']
-        org_email = request.form['org_email']
-        org_phone = request.form['org_phone']
+        org_description = request.form['orgDescription']
+        org_address = request.form['orgAddress']
+        org_email = request.form['orgEmail']
+        org_phone = request.form['orgPhone']
 
         myorgs.UpdateByName(org_name, org_description, org_address, org_email, org_phone)
         
@@ -76,7 +76,7 @@ def edit_organization(org_name):
         return render_template('my-orgs.html', orgs=orgs)
     
     org = myorgs.getByName(org_name)
-    return render_template('edit-organization.html', org=org[0])
+    return render_template('edit-organization.html', org=org)
 
 
 @app.route('/my-organizations', methods=['GET'])
@@ -105,12 +105,13 @@ def submit_form():
 @app.route('/edit_form', methods=['POST'])
 def edit_form():
     if request.method == 'POST':
-        name = request.form.get('orgName')
+        old_name = request.form.get('oldOrgName')
+        new_name = request.form.get('orgName')
         description = request.form.get('orgDescription')
         address = request.form.get('orgAddress')
         email = request.form.get('orgEmail')
         phone = request.form.get('orgPhone')
-        myorgs.UpdateByName(name, description, address, email, phone)
+        myorgs.UpdateByName(old_name, new_name, description, address, email, phone)
     
         return redirect(url_for('my_orgs'))
 
@@ -125,3 +126,4 @@ def delete_form():
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
