@@ -20,7 +20,7 @@
     "email": null,
     "website": "https://www.providence.org",
     "tags": ["primary care", "family medicine", "healthcare", "insurance-based"],
-    "img": null
+    "img": "clinic1.jpg"
   },
   {
     "id": 2,
@@ -42,7 +42,7 @@
     "email": "hello@hemlockclinic.com",
     "website": "https://www.hemlockclinic.com",
     "tags": ["primary care", "direct primary care", "preventive care"],
-    "img": null
+    "img": "clinic2.jpg"
   },
   {
     "id": 3,
@@ -64,7 +64,7 @@
     "email": "info@harmonywellness.com",
     "website": "https://www.harmonywellness.com",
     "tags": ["wellness", "weight loss", "hormone therapy", "metabolic health"],
-    "img": null
+    "img": "clinic3.jpg"
   },
   {
     "id": 4,
@@ -86,7 +86,7 @@
     "email": "info@optimumpeakwellness.com",
     "website": "https://www.optimumpeakwellness.com",
     "tags": ["chiropractic", "wellness", "integrative medicine"],
-    "img": null
+    "img": "clinic4.jpg"
   },
   {
     "id": 5,
@@ -108,7 +108,7 @@
     "email": "info@healthybeings.com",
     "website": "https://www.healthybeings.com",
     "tags": ["holistic health", "nutrition", "wellness coaching"],
-    "img": null
+    "img": "clinic5.jpg"
   },
   {
     "id": 6,
@@ -130,7 +130,7 @@
     "email": "info@wellnessgroup.com",
     "website": "https://www.wellnessgroup.com",
     "tags": ["physical therapy", "rehabilitation", "sports medicine"],
-    "img": null
+    "img": "clinic6.jpg"
   },
   {
     "id": 7,
@@ -152,7 +152,7 @@
     "email": "info@essentialwellnessnw.com",
     "website": "https://www.essentialwellnessnw.com",
     "tags": ["acupuncture", "naturopathic medicine", "integrative wellness"],
-    "img": null
+    "img": "clinic1.jpg"
   },
   {
     "id": 8,
@@ -174,7 +174,7 @@
     "email": "help@kinwellhealth.com",
     "website": "https://www.kinwellhealth.com",
     "tags": ["primary care", "preventive care", "healthcare"],
-    "img": null
+    "img": "clinic2.jpg"
   },
   {
     "id": 9,
@@ -196,7 +196,7 @@
     "email": "info@healthpointchc.org",
     "website": "https://www.healthpointchc.org",
     "tags": ["community health", "primary care", "behavioral health", "dental"],
-    "img": null
+    "img": "clinic3.jpg"
   },
   {
     "id": 10,
@@ -218,11 +218,11 @@
     "email": "info@lightheartassociates.com",
     "website": "https://www.lightheartassociates.com",
     "tags": ["mental health", "therapy", "counseling", "psychology"],
-    "img": null
+    "img": "clinic4.jpg"
   },
   {
     "id": 11,
-    "name": "Overlake Clinics – Redmond",
+    "name": "Overlake Clinics: Redmond",
     "category": "Health & Wellness",
     "description": "Multispecialty medical clinic providing primary and specialty care through Overlake Medical Center & Clinics.",
     "coords": [47.6734, -122.1202],
@@ -240,7 +240,7 @@
     "email": null,
     "website": "https://www.overlakehospital.org",
     "tags": ["primary care", "specialty care", "healthcare", "insurance-based"],
-    "img": null
+    "img": "clinic5.jpg"
   },
   {
     "id": 12,
@@ -262,11 +262,11 @@
     "email": "info@livingwellhealthcenter.com",
     "website": "https://www.livingwellhealthcenter.com",
     "tags": ["chiropractic", "integrative health", "wellness"],
-    "img": null
+    "img": "clinic6.jpg"
   },
   {
     "id": 13,
-    "name": "SOUND Behavioral Health – Redmond",
+    "name": "SOUND Behavioral Health: Redmond",
     "category": "Health & Wellness",
     "description": "Behavioral health organization providing counseling, psychiatry, and recovery services for all ages.",
     "coords": [47.6728, -122.1218],
@@ -284,11 +284,11 @@
     "email": "info@sound.health",
     "website": "https://www.sound.health",
     "tags": ["behavioral health", "mental health", "counseling", "psychiatry"],
-    "img": null
+    "img": "clinic1.jpg"
   },
   {
     "id": 14,
-    "name": "Eastside Ideal Health – Redmond",
+    "name": "Eastside Ideal Health: Redmond",
     "category": "Health & Wellness",
     "description": "Chiropractic and wellness clinic focused on injury recovery, pain relief, and long-term spinal health.",
     "coords": [47.6769, -122.1282],
@@ -306,7 +306,7 @@
     "email": "info@eastsideidealhealth.com",
     "website": "https://www.eastsideidealhealth.com",
     "tags": ["chiropractic", "wellness", "injury recovery"],
-    "img": null
+    "img": "clinic2.jpg"
   },
   {
     "id": 15,
@@ -328,7 +328,7 @@
     "email": "info@thehealthybodyco.com",
     "website": "https://www.thehealthybodyco.com",
     "tags": ["wellness", "IV therapy", "preventive health"],
-    "img": null
+    "img": "clinic3.jpg"
   },
   {
     "id": 16,
@@ -350,7 +350,7 @@
     "email": "info@vitalitywellnesscenter.com",
     "website": "https://www.vitalitywellnesscenter.com",
     "tags": ["naturopathic medicine", "wellness", "hormone health"],
-    "img": null
+    "img": "clinic4.jpg"
   },
   {
     "id": 17,
@@ -372,7 +372,7 @@
     "email": "info@genesiswellness.com",
     "website": "https://www.genesiswellness.com",
     "tags": ["aesthetics", "wellness", "cosmetic medicine"],
-    "img": null
+    "img": "clinic5.jpg"
   },
   {
     "id": 18,
@@ -394,7 +394,7 @@
     "email": "info@alpineintegratedmedicine.com",
     "website": "https://www.alpineintegratedmedicine.com",
     "tags": ["integrative medicine", "primary care", "wellness"],
-    "img": null
+    "img": "clinic6.jpg"
   },
   {
     "id": 19,
@@ -416,7 +416,7 @@
     "email": "info@nwrootswellness.com",
     "website": "https://www.nwrootswellness.com",
     "tags": ["holistic health", "wellness", "mental well-being"],
-    "img": null
+    "img": "clinic1.jpg"
   },
   {
     "id": 20,
@@ -438,7 +438,7 @@
     "email": "info@inshapemd.com",
     "website": "https://www.inshapemd.com",
     "tags": ["medical weight loss", "wellness", "metabolic health"],
-    "img": null
+    "img": "clinic2.jpg"
   },
   {
     "id": 21,
@@ -460,7 +460,7 @@
     "email": null,
     "website": null,
     "tags": ["public speaking", "youth development", "communication skills", "leadership"],
-    "img": null
+    "img": "teaching1.jpg"
   },
   {
     "id": 22,
@@ -482,7 +482,7 @@
     "email": null,
     "website": null,
     "tags": ["STEM", "education", "youth programs", "enrichment"],
-    "img": null
+    "img": "stem.jpg"
   },
   {
     "id": 23,
@@ -504,7 +504,7 @@
     "email": null,
     "website": null,
     "tags": ["STEAM", "robotics", "coding", "youth education"],
-    "img": null
+    "img": "stem.jpg"
   },
   {
     "id": 24,
@@ -526,7 +526,7 @@
     "email": null,
     "website": null,
     "tags": ["esports", "youth programs", "STEM", "team building"],
-    "img": null
+    "img": "computer1.jpg"
   },
   {
     "id": 25,
@@ -548,7 +548,7 @@
     "email": null,
     "website": null,
     "tags": ["coding", "STEM education", "youth programs", "technology"],
-    "img": null
+    "img": "computer2.jpg"
   },
   {
     "id": 26,
@@ -570,7 +570,7 @@
     "email": null,
     "website": null,
     "tags": ["tutoring", "academic enrichment", "math", "science"],
-    "img": null
+    "img": "computer1.jpg"
   },
   {
     "id": 27,
@@ -592,7 +592,7 @@
     "email": null,
     "website": null,
     "tags": ["learning center", "youth education", "academic support"],
-    "img": null
+    "img": "teaching2.jpg"
   },
   {
     "id": 28,
@@ -614,7 +614,7 @@
     "email": null,
     "website": "https://aopsacademy.org",
     "tags": ["advanced math", "STEM", "academic enrichment"],
-    "img": null
+    "img": "teaching1.jpg"
   },
   {
     "id": 29,
@@ -636,7 +636,7 @@
     "email": null,
     "website": null,
     "tags": ["education", "enrichment", "youth learning"],
-    "img": null
+    "img": "building1.jpg"
   },
   {
     "id": 30,
@@ -658,7 +658,7 @@
     "email": null,
     "website": null,
     "tags": ["writing", "language arts", "youth education"],
-    "img": null
+    "img": "teaching2.jpg"
   },
   {
     "id": 31,
@@ -680,7 +680,7 @@
     "email": null,
     "website": null,
     "tags": ["tutoring", "after school", "academic support"],
-    "img": null
+    "img": "computer1.jpg"
   },
   {
     "id": 32,
@@ -702,7 +702,7 @@
     "email": null,
     "website": "https://www.wanic.org",
     "tags": ["career education", "technical training", "high school"],
-    "img": null
+    "img": "computer2.jpg"
   },
   {
     "id": 33,
@@ -724,7 +724,7 @@
     "email": null,
     "website": "https://www.jovie.com",
     "tags": ["childcare", "early learning", "family support"],
-    "img": null
+    "img": "teaching1.jpg"
   },
   {
     "id": 34,
@@ -746,7 +746,7 @@
     "email": null,
     "website": "https://www.snapology.com",
     "tags": ["STEM", "lego", "youth enrichment"],
-    "img": null
+    "img": "stem.jpg"
   },
   {
     "id": 35,
@@ -768,7 +768,7 @@
     "email": null,
     "website": "https://www.c2educate.com",
     "tags": ["tutoring", "test prep", "college readiness"],
-    "img": null
+    "img": "computer2.jpg"
   },
   {
     "id": 36,
@@ -790,7 +790,7 @@
     "email": null,
     "website": "https://www.clubztutoring.com",
     "tags": ["tutoring", "academic support", "online learning"],
-    "img": null
+    "img": "teaching2.jpg"
   },
   {
     "id": 37,
@@ -812,7 +812,7 @@
     "email": null,
     "website": null,
     "tags": ["STEM", "science education", "youth programs"],
-    "img": null
+    "img": "stem.jpg"
   },
   {
     "id": 38,
@@ -834,7 +834,7 @@
     "email": null,
     "website": null,
     "tags": ["science education", "arts education", "camps"],
-    "img": null
+    "img": "building2.jpg"
   },
   {
     "id": 39,
@@ -856,7 +856,7 @@
     "email": null,
     "website": "https://www.redmond.gov",
     "tags": ["youth programs", "community education", "intergenerational"],
-    "img": null
+    "img": "building3.jpg"
   },
   {
     "id": 40,
@@ -878,7 +878,7 @@
     "email": null,
     "website": null,
     "tags": ["environmental education", "community gardening", "youth learning"],
-    "img": null
+    "img": "marymoorpark.jpg"
   },
   {
   "id": 41,
@@ -900,7 +900,7 @@
   "email": null,
   "website": "https://www.hopelink.org",
   "tags": ["food assistance", "financial assistance", "housing support", "nonprofit", "social services"],
-  "img": "hopelink.jpg"
+  "img": "volunteering1.jpg"
 },
 {
   "id": 42,
@@ -922,7 +922,7 @@
   "email": null,
   "website": "https://togethercenter.org",
   "tags": ["housing assistance", "case management", "nonprofit", "community hub"],
-  "img": "togethercenter.jpg"
+  "img": "building4.jpg"
 },
 {
   "id": 43,
@@ -944,7 +944,7 @@
   "email": null,
   "website": "https://www.alsadaqa.org",
   "tags": ["food assistance", "mutual aid", "nonprofit", "culturally responsive"],
-  "img": "alsadaqa.jpg"
+  "img": "building5.jpg"
 },
 {
   "id": 44,
@@ -966,7 +966,7 @@
   "email": null,
   "website": "https://kindering.org",
   "tags": ["early intervention", "child development", "therapy", "nonprofit"],
-  "img": "kindering.jpg"
+  "img": "teaching2.jpg"
 },
 {
   "id": 45,
@@ -988,7 +988,7 @@
   "email": null,
   "website": "https://www.emeraldheights.org",
   "tags": ["senior services", "retirement community", "assisted living"],
-  "img": "emeraldheights.jpg"
+  "img": "building1.jpg"
 },
 {
   "id": 46,
@@ -1010,7 +1010,7 @@
   "email": null,
   "website": "https://www.redmond.gov",
   "tags": ["senior services", "recreation", "city services"],
-  "img": "redmondsenior.jpg"
+  "img": "building2.jpg"
 },
 {
   "id": 47,
@@ -1032,7 +1032,7 @@
   "email": null,
   "website": "https://www.redmondumc.org",
   "tags": ["food assistance", "community meals", "faith-based"],
-  "img": "openkitchen.jpg"
+  "img": "volunteering2.jpg"
 },
 {
   "id": 48,
@@ -1054,7 +1054,7 @@
   "email": null,
   "website": "https://www.redmondcitizencorps.org",
   "tags": ["emergency preparedness", "volunteer", "public safety"],
-  "img": "citizencorps.jpg"
+  "img": "volunteering3.jpg"
 },
 {
   "id": 49,
@@ -1076,7 +1076,7 @@
   "email": null,
   "website": "https://www.redmondkiwanis.org",
   "tags": ["youth support", "community service", "nonprofit"],
-  "img": "kiwanis.jpg"
+  "img": "building4.jpg"
 },
 {
   "id": 50,
@@ -1098,7 +1098,7 @@
   "email": null,
   "website": "https://www.friendsofyouth.org",
   "tags": ["youth services", "housing support", "counseling", "nonprofit"],
-  "img": "friendsofyouth.jpg"
+  "img": "building5.jpg"
 },
 {
   "id": 51,
@@ -1120,7 +1120,7 @@
   "email": null,
   "website": "https://foodnotbombs.net",
   "tags": ["food assistance", "mutual aid", "volunteer-run", "community meals"],
-  "img": "foodnotbombs.jpg"
+  "img": "volunteering1.jpg"
 },
 {
   "id": 52,
@@ -1142,7 +1142,7 @@
   "email": null,
   "website": "https://www.lwsd.org",
   "tags": ["food assistance", "students", "school support", "family services"],
-  "img": "foodbox.jpg"
+  "img": "volunteering2.jpg"
 },
 {
   "id": 53,
@@ -1164,7 +1164,7 @@
   "email": null,
   "website": "https://www.assistanceleague.org/eastside",
   "tags": ["family assistance", "clothing support", "education support", "nonprofit"],
-  "img": "assistanceleague.jpg"
+  "img": "volunteering3.jpg"
 },
 {
   "id": 54,
@@ -1186,7 +1186,7 @@
   "email": null,
   "website": "https://www.ywcaworks.org",
   "tags": ["housing support", "women and families", "transitional housing"],
-  "img": "ywcavillage.jpg"
+  "img": "building1.jpg"
 },
 {
   "id": 55,
@@ -1208,7 +1208,7 @@
   "email": null,
   "website": "https://kcls.org",
   "tags": ["library", "education", "community programs", "public services"],
-  "img": "redmondlibrary.jpg"
+  "img": "building2.jpg"
 },
 {
   "id": 56,
@@ -1230,7 +1230,7 @@
   "email": null,
   "website": "https://www.lwsd.org",
   "tags": ["student services", "education support", "family resources"],
-  "img": "lwsd.jpg"
+  "img": "building3.jpg"
 },
 {
   "id": 57,
@@ -1252,7 +1252,7 @@
   "email": null,
   "website": "https://www.oneredmond.org",
   "tags": ["economic development", "business support", "workforce resources"],
-  "img": "oneredmond.jpg"
+  "img": "building4.jpg"
 },
 {
   "id": 58,
@@ -1274,7 +1274,7 @@
   "email": null,
   "website": "https://www.thinkspaceredmond.org",
   "tags": ["makerspace", "community resources", "creative learning"],
-  "img": "thinkspace.jpg"
+  "img": "building5.jpg"
 },
 {
   "id": 59,
@@ -1296,7 +1296,7 @@
   "email": null,
   "website": "https://www.jfsseattle.org",
   "tags": ["family services", "food assistance", "mental health", "nonprofit"],
-  "img": "jfs.jpg"
+  "img": "volunteering1.jpg"
 },
 {
   "id": 60,
@@ -1318,7 +1318,7 @@
   "email": null,
   "website": "https://www.mapsonline.org",
   "tags": ["faith-based", "community services", "cultural support", "nonprofit"],
-  "img": "maps.jpg"
+  "img": "volunteering2.jpg"
 },
     {
       "id": 19,
