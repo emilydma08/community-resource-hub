@@ -20,7 +20,7 @@ resource_categories = [
     {"name": "Social Services & Support", "icon": "support.png"},
     {"name": "Arts, Culture,", "icon": "relax.png"},
     {"name": "Environmental & Sustainability", "icon": "environment.png"},
-    {"name": "Sports & FItness", "icon": "volunteer.png"},
+    {"name": "Sports & FItness", "icon": "sports.png"},
 ]
 
 @app.route('/')
