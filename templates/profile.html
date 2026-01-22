@@ -10,7 +10,104 @@
 <body>
     {% include "_navbar.html" %}
 
-    <h1>Profile</h1>
+     <div class="pt-20 px-14 max-w-screen mx-auto">
+        <div class="mt-8 mb-6">
+            <h1 class="heading-font text-3xl font-semibold text-gray-900">Profile</h1>
+        </div>
+
+        <!-- Profile Content Grid -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12">
+            <!-- User Info Card -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+                    <div class="flex flex-col items-center mb-6">
+                        <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mb-4">
+                            <span class="heading-font text-3xl text-white font-semibold" id="userInitials">U</span>
+                        </div>
+                        <h2 class="heading-font text-xl font-semibold text-gray-900 mb-1" id="userName">User Name</h2>
+                        <p class="body-font text-sm text-gray-600" id="userEmail">user@example.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="md:col-span-2 space-y-6">
+                <!-- Account Settings -->
+                <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+                    <h2 class="heading-font text-2xl font-semibold mb-4">Account Settings</h2>
+                    <form class="space-y-4">
+                        <div class="flex flex-col gap-2">
+                            <label for="displayName" class="body-font text-sm font-medium text-gray-700">Display Name</label>
+                            <input
+                                type="text"
+                                id="displayName"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent body-font"
+                                placeholder="Enter your display name"
+                            >
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label for="emailAddress" class="body-font text-sm font-medium text-gray-700">Email Address</label>
+                            <input
+                                type="email"
+                                id="emailAddress"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent body-font"
+                                placeholder="your.email@example.com"
+                            >
+                        </div>
+
+                        <div class="flex flex-col gap-2">
+                            <label for="location" class="body-font text-sm font-medium text-gray-700">Location</label>
+                            <input
+                                type="text"
+                                id="location"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent body-font"
+                                placeholder="Redmond, WA"
+                            >
+                        </div>
+
+                        <button
+                            type="button"
+                            id="saveSettings"
+                            class="w-full bg-[var(--blue)] text-white py-3 rounded-lg body-font font-medium hover:opacity-90 transition"
+                        >
+                            Save Changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
+    <script type="module">
+        import { auth } from "{{ url_for('static', filename='auth.js') }}";
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            onAuthStateChanged(auth, (user) => {
+                if (!user) {
+                    window.location.href = "{{ url_for('register') }}";
+                } else {
+                    const userName = user.displayName || 'User';
+                    const userEmail = user.email || 'user@example.com';
+
+                    document.getElementById('userName').textContent = userName;
+                    document.getElementById('userEmail').textContent = userEmail;
+                    document.getElementById('displayName').value = userName;
+                    document.getElementById('emailAddress').value = userEmail;
+
+                    const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+                    document.getElementById('userInitials').textContent = initials;
+                }
+            });
+
+            // Save settings button
+            document.getElementById('saveSettings').addEventListener('click', () => {
+                alert('Settings saved successfully!');
+            });
+        });
+    </script>
     <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
 
 </body>

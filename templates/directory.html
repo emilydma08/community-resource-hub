@@ -26,24 +26,69 @@
                         <p class="body-font text-sm">Filter</p>
                     </div>
 
-                    <div id="filterDropdown" class="hidden absolute right-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-xl z-50">
+                    <!--Filter Dropdown-->
+                    <div id="filterDropdown" class="hidden absolute right-0 mt-2 w-72 bg-white border border-gray-200 rounded-xl shadow-xl z-50">
                         <div class="p-5">
-                            <h3 class="heading-font text-lg font-normal mb-4">Filter Options</h3>
+                            <h3 class="heading-font text-lg font-medium mb-5">Filter Options</h3>
 
-                            <label class="flex items-center gap-3 mb-4 cursor-pointer group">
-                                <input type="checkbox" id="openNowFilter" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer">
-                                <span class="body-font text-sm group-hover:text-gray-700">Open Now</span>
-                            </label>
+                            <!-- Open Now Filter -->
+                            <div class="mb-5 pb-4 border-b border-gray-100">
+                                <label class="flex items-center gap-3 cursor-pointer group">
+                                    <input type="checkbox" id="openNowFilter" class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer">
+                                    <span class="body-font text-sm group-hover:text-gray-700">Open Now</span>
+                                </label>
+                            </div>
 
+                            <!-- Location Filter -->
+                            <div class="mb-5 pb-4 border-b border-gray-100">
+                                <p class="body-font text-sm font-medium mb-3 text-gray-700">Location</p>
+
+                                <button
+                                    id="useLocationBtn"
+                                    type="button"
+                                    class="w-full body-font text-sm border border-gray-300 px-3 py-2.5 rounded-lg hover:bg-gray-50 hover:border-gray-400 transition-colors flex items-center justify-center gap-2"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                    Use my current location
+                                </button>
+
+                                <p id="locationStatus" class="body-font text-xs text-gray-500 mt-2"></p>
+
+                                <label class="block mt-3 body-font text-sm text-gray-700">
+                                    Distance
+                                    <select
+                                        id="distanceSelect"
+                                        class="mt-2 w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm bg-white disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
+                                        disabled
+                                    >
+                                        <option value="1">Within 1 mile</option>
+                                        <option value="2">Within 2 miles</option>
+                                        <option value="5" selected>Within 5 miles</option>
+                                        <option value="10">Within 10 miles</option>
+                                        <option value="25">Within 25 miles</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <!-- Tags Filter -->
                             <div class="mb-5">
                                 <p class="body-font text-sm font-medium mb-3 text-gray-700">Tags</p>
-                                <div id="tagFilters" class="flex flex-col gap-2 max-h-48 overflow-y-auto">
+                                <div id="tagFilters" class="flex flex-col gap-2 max-h-40 overflow-y-auto pr-1">
                                 </div>
                             </div>
 
-                            <div class="flex justify-end gap-3 pt-3 border-t border-gray-200">
-                                <button id="closeFilter" class="body-font text-sm text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">Close</button>
-                                <button id="applyFilter" class="body-font text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Apply</button>
+                            <!-- Action Buttons -->
+                            <div class="pt-4 border-t border-gray-200 space-y-3">
+                                <button id="resetAllFilters" class="w-full body-font text-sm text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-100 border border-gray-200 transition-colors">
+                                    Reset All Filters
+                                </button>
+                                <div class="flex justify-end gap-3">
+                                    <button id="closeFilter" class="body-font text-sm text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">Cancel</button>
+                                    <button id="applyFilter" class="body-font text-sm bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition-colors">Apply</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -60,7 +105,9 @@
                             <span class="open-status text-sm"></span>
                         </div>
                         <div class="flex flex-row gap-3 items-center mr-2">
-                            <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="Bookmark Icon" class="w-6 h-auto">
+                            <button class="save-btn hover:opacity-70 transition-opacity" data-resource-id="{{ resource.id }}" data-resource-name="{{ resource.name }}" data-resource-category="{{ resource.category }}" data-resource-description="{{ resource.description }}" data-resource-url="{{ url_for('resource_subpage', resource_id=resource.id) }}">
+                                <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="Save" class="w-6 h-auto bookmark-icon">
+                            </button>
                             <img src="{{ url_for('static', filename='images/share-30.png') }}" alt="Share Icon" class=" w-6 h-auto">
                             <img src="{{ url_for('static', filename='images/comment-48.png') }}" alt="Comment Icon" class=" w-6 h-auto">
                         </div>
@@ -194,7 +241,39 @@
         const openNowCheckbox = document.getElementById('openNowFilter');
         const tagContainer = document.getElementById("tagFilters");
         const resourceCountElement = document.getElementById("resourceCount");
+        let userLatLng = null;        
+        let userMarker = null;        
+        let userRadiusCircle = null; 
 
+        const useLocationBtn = document.getElementById("useLocationBtn");
+        const distanceSelect = document.getElementById("distanceSelect");
+        const locationStatus = document.getElementById("locationStatus");
+
+        // Distance calculation function
+        function distanceMeters(a, b) {
+            const toRad = deg => (deg * Math.PI) / 180;
+            const R = 6371000; 
+            const dLat = toRad(b[0] - a[0]);
+            const dLng = toRad(b[1] - a[1]);
+            const lat1 = toRad(a[0]);
+            const lat2 = toRad(b[0]);
+
+            const sinDLat = Math.sin(dLat / 2);
+            const sinDLng = Math.sin(dLng / 2);
+
+            const h =
+                sinDLat * sinDLat +
+                Math.cos(lat1) * Math.cos(lat2) * sinDLng * sinDLng;
+
+            return 2 * R * Math.asin(Math.sqrt(h));
+        }
+
+        function milesToMeters(mi) {
+            return mi * 1609.344;
+        }
+
+
+        // Dropdown toggle and outside click handling
         filterButton.addEventListener('click', e => { e.stopPropagation(); filterDropdown.classList.toggle('hidden'); });
         closeFilter.addEventListener('click', () => filterDropdown.classList.add('hidden'));
         document.addEventListener('click', e => {
@@ -202,6 +281,7 @@
                 filterDropdown.classList.add('hidden');
         });
 
+        // Populate tag filters
         const allTags = new Set();
         resourceData.forEach(r => r.tags.forEach(tag => allTags.add(tag)));
         allTags.forEach(tag => {
@@ -211,15 +291,35 @@
             tagContainer.appendChild(label);
         });
 
-        applyFilter.addEventListener("click", () => {
+        // Apply filters
+        function applyAllFilters() {
             const selectedTags = Array.from(document.querySelectorAll(".tag-checkbox:checked")).map(cb => cb.value);
             const filterOpenNow = openNowCheckbox.checked;
+
+            const miles = distanceSelect.value ? Number(distanceSelect.value) : null;
+            const radiusMeters = (miles && userLatLng) ? milesToMeters(miles) : null;
+
             let visibleCount = 0;
 
             resourceData.forEach(r => {
                 let show = true;
-                if (filterOpenNow && !isOpenNow(r.hours)) show = false;
-                if (selectedTags.length && !selectedTags.some(tag => r.tags.includes(tag))) show = false;
+
+                if (filterOpenNow && !isOpenNow(r.hours)){
+                    show = false;
+                }
+
+                if (selectedTags.length && !selectedTags.some(tag => r.tags.includes(tag))){
+                    show = false;
+                }
+
+                if (radiusMeters !== null) {
+                    if (!Array.isArray(r.coords) || r.coords.length !== 2) {
+                        show = false;
+                    } else {
+                        const d = distanceMeters(userLatLng, r.coords);
+                        if (d > radiusMeters) show = false;
+                    }
+                }
 
                 r.card.style.display = show ? "flex" : "none";
                 if (show) {
@@ -231,7 +331,190 @@
             });
 
             resourceCountElement.textContent = `${visibleCount} resource${visibleCount !== 1 ? 's' : ''} found`;
+
+            // Update user radius circle on map
+            if (userLatLng && radiusMeters !== null) {
+                if (userRadiusCircle) userRadiusCircle.remove();
+                userRadiusCircle = L.circle(userLatLng, { radius: radiusMeters }).addTo(map);
+            } else {
+                if (userRadiusCircle) {
+                userRadiusCircle.remove();
+                userRadiusCircle = null;
+                }
+            }
+            }
+
+
+        applyFilter.addEventListener("click", () => {
+            applyAllFilters();
             filterDropdown.classList.add("hidden");
+        });
+
+
+        // Geolocation & Distance Filter JS
+        function setLocationUI(enabled, msg = "") {
+            distanceSelect.disabled = !enabled;
+            locationStatus.textContent = msg;
+            }
+
+            useLocationBtn.addEventListener("click", () => {
+            if (!navigator.geolocation) {
+                setLocationUI(false, "Geolocation isn’t supported by this browser.");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                (pos) => {
+                    userLatLng = [pos.coords.latitude, pos.coords.longitude];
+
+                    if (userMarker){
+                        userMarker.remove();
+                    }
+                    userMarker = L.marker(userLatLng).addTo(map).bindPopup("<b>Your location</b>");
+
+                    setLocationUI(true, "Location found!");
+                    map.setView(userLatLng, 13);
+                    applyAllFilters();
+                },
+                (err) => {
+                    userLatLng = null;
+                    if (userMarker){
+                        userMarker.remove(); userMarker = null;
+                    }
+                    if (userRadiusCircle) {
+                        userRadiusCircle.remove(); userRadiusCircle = null;
+                    }
+
+                    if (err.code === err.PERMISSION_DENIED) {
+                        setLocationUI(false, "Location permission denied. Enable it in your browser settings to use distance filtering.");
+                    } else if (err.code === err.POSITION_UNAVAILABLE) {
+                        setLocationUI(false, "Location unavailable right now.");
+                    } else {
+                        setLocationUI(false, "Couldn’t fetch location. Try again.");
+                    }
+
+                    distanceSelect.value = "";
+                    applyAllFilters();
+                },
+                {
+                enableHighAccuracy: true,
+                timeout: 8000,
+                maximumAge: 60000
+                }
+            );
+            });
+
+            distanceSelect.addEventListener("change", () => {
+            applyAllFilters();
+            });
+
+            // Reset All Filters
+            const resetAllFiltersBtn = document.getElementById("resetAllFilters");
+            resetAllFiltersBtn.addEventListener("click", () => {
+                // Reset Open Now checkbox
+                openNowCheckbox.checked = false;
+
+                // Reset location filter
+                userLatLng = null;
+                distanceSelect.value = "5";
+                distanceSelect.disabled = true;
+                locationStatus.textContent = "";
+                if (userMarker) { userMarker.remove(); userMarker = null; }
+                if (userRadiusCircle) { userRadiusCircle.remove(); userRadiusCircle = null; }
+
+                // Reset tag checkboxes
+                document.querySelectorAll(".tag-checkbox").forEach(cb => cb.checked = false);
+
+                // Apply filters to show all resources
+                applyAllFilters();
+            });
+
+    });
+  </script>
+
+  <!-- Save Resource Functionality -->
+  <script type="module">
+    import { auth } from "{{ url_for('static', filename='auth.js') }}";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+    let currentUserId = null;
+
+    function getSavedResources() {
+        const key = currentUserId ? `savedResources_${currentUserId}` : 'savedResources_guest';
+        const saved = localStorage.getItem(key);
+        return saved ? JSON.parse(saved) : [];
+    }
+
+    function saveResources(resources) {
+        const key = currentUserId ? `savedResources_${currentUserId}` : 'savedResources_guest';
+        localStorage.setItem(key, JSON.stringify(resources));
+    }
+
+    function isResourceSaved(resourceId) {
+        const saved = getSavedResources();
+        return saved.some(r => r.id === resourceId);
+    }
+
+    function toggleSaveResource(resourceData) {
+        let saved = getSavedResources();
+        const existingIndex = saved.findIndex(r => r.id === resourceData.id);
+
+        if (existingIndex >= 0) {
+            saved.splice(existingIndex, 1);
+            return false;
+        } else {
+            saved.push(resourceData);
+            return true;
+        }
+    }
+
+    function updateSaveButtonUI(btn, isSaved) {
+        const img = btn.querySelector('.bookmark-icon');
+        if (isSaved) {
+            img.style.filter = 'invert(39%) sepia(95%) saturate(1066%) hue-rotate(198deg) brightness(96%) contrast(93%)';
+            btn.title = 'Remove from saved';
+        } else {
+            img.style.filter = '';
+            btn.title = 'Save to profile';
+        }
+    }
+
+    onAuthStateChanged(auth, (user) => {
+        currentUserId = user ? user.uid : null;
+
+        // Initialize all save buttons
+        document.querySelectorAll('.save-btn').forEach(btn => {
+            const resourceId = parseInt(btn.dataset.resourceId);
+            const isSaved = isResourceSaved(resourceId);
+            updateSaveButtonUI(btn, isSaved);
+
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const resourceData = {
+                    id: parseInt(btn.dataset.resourceId),
+                    name: btn.dataset.resourceName,
+                    category: btn.dataset.resourceCategory,
+                    description: btn.dataset.resourceDescription,
+                    url: btn.dataset.resourceUrl
+                };
+
+                const nowSaved = toggleSaveResource(resourceData);
+                saveResources(getSavedResources().includes(resourceData) ? getSavedResources() :
+                    nowSaved ? [...getSavedResources().filter(r => r.id !== resourceData.id), resourceData] : getSavedResources().filter(r => r.id !== resourceData.id));
+
+                // Re-read and update
+                let saved = getSavedResources();
+                const idx = saved.findIndex(r => r.id === resourceData.id);
+                if (nowSaved && idx < 0) {
+                    saved.push(resourceData);
+                } else if (!nowSaved && idx >= 0) {
+                    saved.splice(idx, 1);
+                }
+                saveResources(saved);
+
+                updateSaveButtonUI(btn, nowSaved);
+            });
         });
     });
   </script>

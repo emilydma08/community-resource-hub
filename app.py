@@ -18,9 +18,9 @@ resource_categories = [
     {"name": "Health & Wellness", "icon": "health.png"},
     {"name": "Education & Youth", "icon": "education.png"},
     {"name": "Social Services & Support", "icon": "support.png"},
-    {"name": "Arts, Culture, & Recreation", "icon": "relax.png"},
+    {"name": "Arts, Culture,", "icon": "relax.png"},
     {"name": "Environmental & Sustainability", "icon": "environment.png"},
-    {"name": "Community Events & Volunteering", "icon": "volunteer.png"},
+    {"name": "Sports & FItness", "icon": "volunteer.png"},
 ]
 
 @app.route('/')
