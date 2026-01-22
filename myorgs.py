@@ -1,7 +1,6 @@
-import firebase_admin
 from firebase_admin import credentials, firestore, initialize_app
 
-cred = credentials.Certificate("myorgs-config.json")
+cred = credentials.Certificate("/etc/secrets/myorgs-config.json")
 initialize_app(cred)
 db = firestore.client()
 
