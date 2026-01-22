@@ -18,9 +18,9 @@ resource_categories = [
     {"name": "Health & Wellness", "icon": "health.png"},
     {"name": "Education & Youth", "icon": "education.png"},
     {"name": "Social Services & Support", "icon": "support.png"},
-    {"name": "Arts & Culture,", "icon": "arts-culture.png"},
+    {"name": "Arts & Culture", "icon": "arts-culture.png"},
     {"name": "Environmental & Sustainability", "icon": "environment.png"},
-    {"name": "Sports & FItness", "icon": "sports-rec.png"},
+    {"name": "Sports & Fitness", "icon": "sports-rec.png"},
 ]
 
 @app.route('/')
@@ -34,6 +34,10 @@ def login():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     return render_template('register.html', categories=resource_categories)
+
+@app.route('/references', methods=['GET', 'POST'])
+def references():
+    return render_template('reference.html', categories=resource_categories)
 
 @app.route('/survey', methods=['GET'])
 def survey():
@@ -74,7 +78,7 @@ def edit_organization(org_name):
 
         myorgs.UpdateByName(org_name, org_description, org_address, org_email, org_phone, org_website, org_category)
         
-        orgs = myorgs.get()  # Fetch all users
+        orgs = myorgs.get()  
         return render_template('my-orgs.html', orgs=orgs)
     
     org = myorgs.getByName(org_name)
