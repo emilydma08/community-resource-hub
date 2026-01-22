@@ -26,28 +26,32 @@ def getByName(name):
         data.append(org_data)
     return data
 
-def UpdateByName(old_name, new_name, description, address, email, phone):
+def UpdateByName(old_name, new_name, description, address, email, phone, website, category):
     conn = db.collection('orgs')
     query = conn.where('name', '==', old_name).limit(1)
     docs = list(query.stream())
     if docs:
         doc_ref = docs[0].reference
         doc_ref.update({
-            'name': new_name,  # Add this line
+            'name': new_name,
             'description': description,
             'address': address,
             'email': email,
-            'phone': phone
+            'phone': phone,
+            'website': website,
+            'category': category
         })
 
-def insert(name, description, address, email, phone):
+def insert(name, description, address, email, phone, website, category):
     conn = db.collection('orgs')
     conn.add({
         'name': name,
         'description': description,
         'address': address,
         'email': email,
-        'phone': phone
+        'phone': phone,
+        'website': website,
+        'category': category
     })
     print("Data inserted successfully.")
 

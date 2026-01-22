@@ -69,8 +69,10 @@ def edit_organization(org_name):
         org_address = request.form['orgAddress']
         org_email = request.form['orgEmail']
         org_phone = request.form['orgPhone']
+        org_website = request.form['orgWebsite']
+        org_category = request.form['orgCategory']
 
-        myorgs.UpdateByName(org_name, org_description, org_address, org_email, org_phone)
+        myorgs.UpdateByName(org_name, org_description, org_address, org_email, org_phone, org_website, org_category)
         
         orgs = myorgs.get()  # Fetch all users
         return render_template('my-orgs.html', orgs=orgs)
@@ -98,8 +100,10 @@ def submit_form():
         address = request.form.get('orgAddress')
         email = request.form.get('orgEmail')
         phone = request.form.get('orgPhone')
+        website = request.form.get('orgWebsite')
+        category = request.form.get('orgCategory')
         print("name:" + str(name))
-        myorgs.insert(name, description, address, email, phone)
+        myorgs.insert(name, description, address, email, phone, website, category)
     return redirect(url_for('my_orgs'))
 
 @app.route('/edit_form', methods=['POST'])
@@ -111,8 +115,10 @@ def edit_form():
         address = request.form.get('orgAddress')
         email = request.form.get('orgEmail')
         phone = request.form.get('orgPhone')
-        myorgs.UpdateByName(old_name, new_name, description, address, email, phone)
-    
+        website = request.form.get('orgWebsite')
+        category = request.form.get('orgCategory')
+        myorgs.UpdateByName(old_name, new_name, description, address, email, phone, website, category)
+
         return redirect(url_for('my_orgs'))
 
 @app.route('/delete_form', methods=['POST'])
