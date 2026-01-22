@@ -21,7 +21,7 @@
             <div class="md:col-span-1 space-y-6">
                 <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
                     <div class="flex flex-col items-center mb-6">
-                        <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mb-4">
+                        <div class="w-24 h-24 bg-[var(--blue)] rounded-full flex items-center justify-center mb-4">
                             <span class="heading-font text-3xl text-white font-semibold" id="userInitials">U</span>
                         </div>
                         <h2 class="heading-font text-xl font-semibold text-gray-900 mb-1" id="userName">User Name</h2>
@@ -134,7 +134,7 @@
                     card.className = 'block p-3 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-colors cursor-pointer';
                     card.innerHTML = `
                         <h4 class="body-font text-sm font-medium text-gray-900 mb-1">${resource.name}</h4>
-                        <p class="body-font text-xs text-blue-600 mb-1">${resource.category}</p>
+                        <p class="body-font text-xs text-[var(--blue)] mb-1">${resource.category}</p>
                         <p class="body-font text-xs text-gray-500 line-clamp-2">${resource.description}</p>
                     `;
                     container.appendChild(card);
