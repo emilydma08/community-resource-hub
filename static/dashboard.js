@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userCategories = responses.categories || [];
     const resources_categories = userCategories.map(category => {
         return categoryMap[category];
-    });
+    }).filter(Boolean);
     const filtered_resources = resources.filter(resource => {
        return resources_categories.includes(resource.category);
         });
@@ -42,18 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
         "Health": ["health", "wellness", "primary_care", "family_health"],
         "Community-service": ["volunteering", "gardening", "community", "families"]
     }
-    
     const allowedTags = [];
     const userTags = responses.interests;
     userTags.forEach(tag => {
+        if (tagMap[tag]) {
         allowedTags.push(...tagMap[tag]);
+        }
     });
     const filtered_tags = filtered_resources.filter(resource => {
         return resource.tags.some(tag => allowedTags.includes(tag));
     });
+    const finalResources = filtered_tags.length > 0 
+    ? filtered_tags 
+    : resources;
     const container = document.getElementById('resources-container');
     container.innerHTML = '';
-    filtered_tags.sort(() => Math.random() - 0.5).slice(0, 5).forEach(resource => {
+    finalResources.sort(() => Math.random() - 0.5).slice(0, 5).forEach(resource => {
         const card = document.createElement('div');
         card.className = "flex flex-none flex-col h-[70vh] bg-white rounded-2xl w-[45%] rounded-lg cursor-pointer hover:shadow-lg transition";
         card.dataset.url = `/resource/${resource.id}`; 
