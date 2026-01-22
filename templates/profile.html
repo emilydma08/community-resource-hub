@@ -18,7 +18,7 @@
         <!-- Profile Content Grid -->
         <div class="grid md:grid-cols-3 gap-6 mb-12">
             <!-- User Info Card -->
-            <div class="md:col-span-1">
+            <div class="md:col-span-1 space-y-6">
                 <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
                     <div class="flex flex-col items-center mb-6">
                         <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-700 rounded-full flex items-center justify-center mb-4">
@@ -26,6 +26,14 @@
                         </div>
                         <h2 class="heading-font text-xl font-semibold text-gray-900 mb-1" id="userName">User Name</h2>
                         <p class="body-font text-sm text-gray-600" id="userEmail">user@example.com</p>
+                    </div>
+                </div>
+
+                <!-- Saved Resources -->
+                <div class="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+                    <h3 class="heading-font text-lg font-semibold text-gray-900 mb-4">Saved Resources</h3>
+                    <div id="savedResourcesList" class="space-y-3">
+                        <p class="body-font text-sm text-gray-500" id="noSavedMessage">No saved resources yet.</p>
                     </div>
                 </div>
             </div>
@@ -99,8 +107,39 @@
 
                     const initials = userName.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
                     document.getElementById('userInitials').textContent = initials;
+
+                    // Load saved resources
+                    loadSavedResources(user.uid);
                 }
             });
+
+            function loadSavedResources(userId) {
+                const storageKey = userId ? `savedResources_${userId}` : 'savedResources_guest';
+                const saved = localStorage.getItem(storageKey);
+                const resources = saved ? JSON.parse(saved) : [];
+
+                const container = document.getElementById('savedResourcesList');
+                const noSavedMessage = document.getElementById('noSavedMessage');
+
+                if (resources.length === 0) {
+                    noSavedMessage.style.display = 'block';
+                    return;
+                }
+
+                noSavedMessage.style.display = 'none';
+
+                resources.forEach(resource => {
+                    const card = document.createElement('a');
+                    card.href = resource.url;
+                    card.className = 'block p-3 border border-gray-200 rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-colors cursor-pointer';
+                    card.innerHTML = `
+                        <h4 class="body-font text-sm font-medium text-gray-900 mb-1">${resource.name}</h4>
+                        <p class="body-font text-xs text-blue-600 mb-1">${resource.category}</p>
+                        <p class="body-font text-xs text-gray-500 line-clamp-2">${resource.description}</p>
+                    `;
+                    container.appendChild(card);
+                });
+            }
 
             // Save settings button
             document.getElementById('saveSettings').addEventListener('click', () => {

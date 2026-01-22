@@ -439,20 +439,21 @@
 
     let currentUserId = null;
 
+    function getStorageKey() {
+        return currentUserId ? `savedResources_${currentUserId}` : 'savedResources_guest';
+    }
+
     function getSavedResources() {
-        const key = currentUserId ? `savedResources_${currentUserId}` : 'savedResources_guest';
-        const saved = localStorage.getItem(key);
+        const saved = localStorage.getItem(getStorageKey());
         return saved ? JSON.parse(saved) : [];
     }
 
-    function saveResources(resources) {
-        const key = currentUserId ? `savedResources_${currentUserId}` : 'savedResources_guest';
-        localStorage.setItem(key, JSON.stringify(resources));
+    function saveResourcesToStorage(resources) {
+        localStorage.setItem(getStorageKey(), JSON.stringify(resources));
     }
 
     function isResourceSaved(resourceId) {
-        const saved = getSavedResources();
-        return saved.some(r => r.id === resourceId);
+        return getSavedResources().some(r => r.id === resourceId);
     }
 
     function toggleSaveResource(resourceData) {
@@ -461,9 +462,11 @@
 
         if (existingIndex >= 0) {
             saved.splice(existingIndex, 1);
+            saveResourcesToStorage(saved);
             return false;
         } else {
             saved.push(resourceData);
+            saveResourcesToStorage(saved);
             return true;
         }
     }
@@ -482,11 +485,9 @@
     onAuthStateChanged(auth, (user) => {
         currentUserId = user ? user.uid : null;
 
-        // Initialize all save buttons
         document.querySelectorAll('.save-btn').forEach(btn => {
             const resourceId = parseInt(btn.dataset.resourceId);
-            const isSaved = isResourceSaved(resourceId);
-            updateSaveButtonUI(btn, isSaved);
+            updateSaveButtonUI(btn, isResourceSaved(resourceId));
 
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -500,19 +501,6 @@
                 };
 
                 const nowSaved = toggleSaveResource(resourceData);
-                saveResources(getSavedResources().includes(resourceData) ? getSavedResources() :
-                    nowSaved ? [...getSavedResources().filter(r => r.id !== resourceData.id), resourceData] : getSavedResources().filter(r => r.id !== resourceData.id));
-
-                // Re-read and update
-                let saved = getSavedResources();
-                const idx = saved.findIndex(r => r.id === resourceData.id);
-                if (nowSaved && idx < 0) {
-                    saved.push(resourceData);
-                } else if (!nowSaved && idx >= 0) {
-                    saved.splice(idx, 1);
-                }
-                saveResources(saved);
-
                 updateSaveButtonUI(btn, nowSaved);
             });
         });

@@ -59,7 +59,9 @@
         <!-- Buttons + Map -->
         <section class="space-y-4">
         <div class="flex justify-around bg-white p-3 rounded-xl shadow-sm border border-gray-200">
-            <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="Bookmark Icon" class="w-7 h-auto">
+            <button id="saveResourceBtn" class="hover:opacity-70 transition-opacity" title="Save to profile">
+                <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="Save" class="w-7 h-auto" id="bookmarkIcon">
+            </button>
             <img src="{{ url_for('static', filename='images/share-30.png') }}" alt="Share Icon" class="w-7 h-auto">
             <img src="{{ url_for('static', filename='images/comment-48.png') }}" alt="Comment Icon" class="w-7 h-auto">
         </div>
@@ -261,6 +263,76 @@
 
     
     <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
+
+  <!-- Save Resource Functionality -->
+  <script type="module">
+    import { auth } from "{{ url_for('static', filename='auth.js') }}";
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+    const resourceData = {
+        id: {{ resource.id }},
+        name: "{{ resource.name }}",
+        category: "{{ resource.category }}",
+        description: "{{ resource.description | replace('"', '\\"') | replace('\n', ' ') }}",
+        url: "{{ url_for('resource_subpage', resource_id=resource.id) }}"
+    };
+
+    let currentUserId = null;
+
+    function getStorageKey() {
+        return currentUserId ? `savedResources_${currentUserId}` : 'savedResources_guest';
+    }
+
+    function getSavedResources() {
+        const saved = localStorage.getItem(getStorageKey());
+        return saved ? JSON.parse(saved) : [];
+    }
+
+    function saveResourcesToStorage(resources) {
+        localStorage.setItem(getStorageKey(), JSON.stringify(resources));
+    }
+
+    function isResourceSaved(resourceId) {
+        return getSavedResources().some(r => r.id === resourceId);
+    }
+
+    function toggleSaveResource() {
+        let saved = getSavedResources();
+        const existingIndex = saved.findIndex(r => r.id === resourceData.id);
+
+        if (existingIndex >= 0) {
+            saved.splice(existingIndex, 1);
+            saveResourcesToStorage(saved);
+            return false;
+        } else {
+            saved.push(resourceData);
+            saveResourcesToStorage(saved);
+            return true;
+        }
+    }
+
+    function updateSaveButtonUI(isSaved) {
+        const img = document.getElementById('bookmarkIcon');
+        const btn = document.getElementById('saveResourceBtn');
+        if (isSaved) {
+            img.style.filter = 'invert(39%) sepia(95%) saturate(1066%) hue-rotate(198deg) brightness(96%) contrast(93%)';
+            btn.title = 'Remove from saved';
+        } else {
+            img.style.filter = '';
+            btn.title = 'Save to profile';
+        }
+    }
+
+    onAuthStateChanged(auth, (user) => {
+        currentUserId = user ? user.uid : null;
+        updateSaveButtonUI(isResourceSaved(resourceData.id));
+
+        document.getElementById('saveResourceBtn').addEventListener('click', () => {
+            const nowSaved = toggleSaveResource();
+            updateSaveButtonUI(nowSaved);
+        });
+    });
+  </script>
 
 </body>
 </html>
