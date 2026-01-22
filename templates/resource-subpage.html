@@ -59,16 +59,35 @@
         <!-- Buttons + Map -->
         <section class="space-y-4">
         <div class="flex justify-around bg-white p-3 rounded-xl shadow-sm border border-gray-200">
-            <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="Bookmark Icon" class="w-7 h-auto">
-            <img src="{{ url_for('static', filename='images/share-30.png') }}" alt="Share Icon" class="w-7 h-auto">
-            <img src="{{ url_for('static', filename='images/comment-48.png') }}" alt="Comment Icon" class="w-7 h-auto">
-        </div>
+    <button id="bookmarkBtn" type="button"
+        class="p-2 rounded-lg hover:bg-gray-100"
+        aria-label="Bookmark">
+        <img src="{{ url_for('static', filename='images/bookmark.png') }}" alt="" class="w-7 h-auto">
+    </button>
+
+    <button id="shareBtn" type="button"
+        class="p-2 rounded-lg hover:bg-gray-100"
+        aria-label="Share">
+        <img src="{{ url_for('static', filename='images/share-30.png') }}" alt="" class="w-7 h-auto">
+    </button>
+
+    <button id="commentBtn" type="button"
+        class="p-2 rounded-lg hover:bg-gray-100"
+        aria-label="Comment">
+        <img src="{{ url_for('static', filename='images/comment-48.png') }}" alt="" class="w-7 h-auto">
+    </button>
+</div>
+
+<p id="toast" class="hidden text-sm text-gray-600 text-center"></p>
+
         <div style="height: 250px; border-radius: 2rem;" id="map"></div>
         </section>
     </main>
 
-    <section class="w-[75vw] mx-auto mt-6 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-        <h2 class="text-2xl font-semibold mb-4">Discussion</h2>
+    <section id="discussion"
+    class="w-[75vw] mx-auto mt-6 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+    <h2 class="text-2xl font-semibold mb-4">Discussion</h2>
+
 
         <div id="comments" class="space-y-5 mb-4">
         <!-- Existing comments -->
@@ -259,7 +278,58 @@
 
 
 
-    
+    <script>
+  const shareBtn = document.getElementById("shareBtn");
+  const toast = document.getElementById("toast");
+
+  function showToast(message) {
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.remove("hidden");
+    setTimeout(() => toast.classList.add("hidden"), 2000);
+  }
+
+  if (shareBtn) {
+    shareBtn.addEventListener("click", async () => {
+      const shareData = {
+        title: "{{ resource.name | e }}",
+        text: "Check out this resource: {{ resource.name | e }}",
+        url: window.location.href
+      };
+
+      try {
+        // Best case: native share (phones, some desktops)
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else if (navigator.clipboard?.writeText) {
+          // Fallback: copy link
+          await navigator.clipboard.writeText(shareData.url);
+          showToast("Link copied!");
+        } else {
+          // Old-school fallback
+          prompt("Copy this link:", shareData.url);
+        }
+      } catch (err) {
+        showToast("Couldn’t share link");
+      }
+    });
+  }
+</script>
+
+<script>
+  const commentBtn = document.getElementById("commentBtn");
+
+  if (commentBtn) {
+    commentBtn.addEventListener("click", () => {
+      const discussion = document.getElementById("discussion");
+      if (discussion) {
+        discussion.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }
+</script>
+
+
     <script src="{{ url_for('static', filename='js/sitewide.js') }}"></script>
 
 </body>
